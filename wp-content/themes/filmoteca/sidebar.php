@@ -2,6 +2,15 @@
     <!-- Widget Area -->
     <div class="single-widget-area mb-30">
         <div class="widget-title">
+            <h5>Buscar</h5>
+        </div>
+        <div class="widget-content">
+            <?php get_search_form(); ?>
+        </div>
+    </div>
+    <!-- Widget Area -->
+    <div class="single-widget-area mb-30">
+        <div class="widget-title">
             <h5>Tags</h5>
         </div>
         <div class="widget-content">
@@ -32,7 +41,18 @@
         </div>
         <div class="widget-content">
             <?php 
-                wp_list_authors();
+                wp_list_authors('hide_empty=0');
+            ?>
+        </div>
+    </div>
+     <!-- Widget Area -->
+    <div class="single-widget-area mb-30">
+        <div class="widget-title">
+            <h5>Categorias</h5>
+        </div>
+        <div class="widget-content">
+            <?php 
+                wp_list_categories('title_li');
             ?>
         </div>
     </div>
@@ -57,3 +77,5 @@
         <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/img/bg-img/add2.gif" alt=""></a>
     </div>
 </div>
+
+<!--https://ide.c9.io/neomode/wordpress2108-->

@@ -1,0 +1,122 @@
+[11-Jan-2019 12:46:21 UTC] PHP Warning:  require_once(./templates/custom-fields.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/wp-content/themes/filmoteca/functions.php on line 8
+[11-Jan-2019 12:46:21 UTC] PHP Stack trace:
+[11-Jan-2019 12:46:21 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[11-Jan-2019 12:46:21 UTC] PHP   2. require_once() /home/ubuntu/workspace/wp-admin/admin-ajax.php:22
+[11-Jan-2019 12:46:21 UTC] PHP   3. require_once() /home/ubuntu/workspace/wp-load.php:37
+[11-Jan-2019 12:46:21 UTC] PHP   4. require_once() /home/ubuntu/workspace/wp-config.php:92
+[11-Jan-2019 12:46:21 UTC] PHP   5. include() /home/ubuntu/workspace/wp-settings.php:443
+[11-Jan-2019 12:46:21 UTC] PHP Fatal error:  require_once(): Failed opening required './templates/custom-fields.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/wp-content/themes/filmoteca/functions.php on line 8
+[11-Jan-2019 12:46:21 UTC] PHP Stack trace:
+[11-Jan-2019 12:46:21 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[11-Jan-2019 12:46:21 UTC] PHP   2. require_once() /home/ubuntu/workspace/wp-admin/admin-ajax.php:22
+[11-Jan-2019 12:46:21 UTC] PHP   3. require_once() /home/ubuntu/workspace/wp-load.php:37
+[11-Jan-2019 12:46:21 UTC] PHP   4. require_once() /home/ubuntu/workspace/wp-config.php:92
+[11-Jan-2019 12:46:21 UTC] PHP   5. include() /home/ubuntu/workspace/wp-settings.php:443
+[11-Jan-2019 12:47:21 UTC] PHP Warning:  require_once(./templates/custom-fields.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/wp-content/themes/filmoteca/functions.php on line 8
+[11-Jan-2019 12:47:21 UTC] PHP Stack trace:
+[11-Jan-2019 12:47:21 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[11-Jan-2019 12:47:21 UTC] PHP   2. require_once() /home/ubuntu/workspace/wp-admin/admin-ajax.php:22
+[11-Jan-2019 12:47:21 UTC] PHP   3. require_once() /home/ubuntu/workspace/wp-load.php:37
+[11-Jan-2019 12:47:21 UTC] PHP   4. require_once() /home/ubuntu/workspace/wp-config.php:92
+[11-Jan-2019 12:47:21 UTC] PHP   5. include() /home/ubuntu/workspace/wp-settings.php:443
+[11-Jan-2019 12:47:21 UTC] PHP Fatal error:  require_once(): Failed opening required './templates/custom-fields.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/wp-content/themes/filmoteca/functions.php on line 8
+[11-Jan-2019 12:47:21 UTC] PHP Stack trace:
+[11-Jan-2019 12:47:21 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[11-Jan-2019 12:47:21 UTC] PHP   2. require_once() /home/ubuntu/workspace/wp-admin/admin-ajax.php:22
+[11-Jan-2019 12:47:21 UTC] PHP   3. require_once() /home/ubuntu/workspace/wp-load.php:37
+[11-Jan-2019 12:47:21 UTC] PHP   4. require_once() /home/ubuntu/workspace/wp-config.php:92
+[11-Jan-2019 12:47:21 UTC] PHP   5. include() /home/ubuntu/workspace/wp-settings.php:443
+[11-Jan-2019 12:49:22 UTC] PHP Warning:  require_once(./templates/custom-fields.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/wp-content/themes/filmoteca/functions.php on line 8
+[11-Jan-2019 12:49:22 UTC] PHP Stack trace:
+[11-Jan-2019 12:49:22 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[11-Jan-2019 12:49:22 UTC] PHP   2. require_once() /home/ubuntu/workspace/wp-admin/admin-ajax.php:22
+[11-Jan-2019 12:49:22 UTC] PHP   3. require_once() /home/ubuntu/workspace/wp-load.php:37
+[11-Jan-2019 12:49:22 UTC] PHP   4. require_once() /home/ubuntu/workspace/wp-config.php:92
+[11-Jan-2019 12:49:22 UTC] PHP   5. include() /home/ubuntu/workspace/wp-settings.php:443
+[11-Jan-2019 12:49:22 UTC] PHP Fatal error:  require_once(): Failed opening required './templates/custom-fields.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/wp-content/themes/filmoteca/functions.php on line 8
+[11-Jan-2019 12:49:22 UTC] PHP Stack trace:
+[11-Jan-2019 12:49:22 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[11-Jan-2019 12:49:22 UTC] PHP   2. require_once() /home/ubuntu/workspace/wp-admin/admin-ajax.php:22
+[11-Jan-2019 12:49:22 UTC] PHP   3. require_once() /home/ubuntu/workspace/wp-load.php:37
+[11-Jan-2019 12:49:22 UTC] PHP   4. require_once() /home/ubuntu/workspace/wp-config.php:92
+[11-Jan-2019 12:49:22 UTC] PHP   5. include() /home/ubuntu/workspace/wp-settings.php:443
+[11-Jan-2019 12:51:23 UTC] PHP Warning:  require_once(./templates/custom-fields.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/wp-content/themes/filmoteca/functions.php on line 8
+[11-Jan-2019 12:51:23 UTC] PHP Stack trace:
+[11-Jan-2019 12:51:23 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[11-Jan-2019 12:51:23 UTC] PHP   2. require_once() /home/ubuntu/workspace/wp-admin/admin-ajax.php:22
+[11-Jan-2019 12:51:23 UTC] PHP   3. require_once() /home/ubuntu/workspace/wp-load.php:37
+[11-Jan-2019 12:51:23 UTC] PHP   4. require_once() /home/ubuntu/workspace/wp-config.php:92
+[11-Jan-2019 12:51:23 UTC] PHP   5. include() /home/ubuntu/workspace/wp-settings.php:443
+[11-Jan-2019 12:51:23 UTC] PHP Fatal error:  require_once(): Failed opening required './templates/custom-fields.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/wp-content/themes/filmoteca/functions.php on line 8
+[11-Jan-2019 12:51:23 UTC] PHP Stack trace:
+[11-Jan-2019 12:51:23 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[11-Jan-2019 12:51:23 UTC] PHP   2. require_once() /home/ubuntu/workspace/wp-admin/admin-ajax.php:22
+[11-Jan-2019 12:51:23 UTC] PHP   3. require_once() /home/ubuntu/workspace/wp-load.php:37
+[11-Jan-2019 12:51:23 UTC] PHP   4. require_once() /home/ubuntu/workspace/wp-config.php:92
+[11-Jan-2019 12:51:23 UTC] PHP   5. include() /home/ubuntu/workspace/wp-settings.php:443
+[11-Jan-2019 12:53:24 UTC] PHP Warning:  require_once(./templates/custom-fields.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/wp-content/themes/filmoteca/functions.php on line 8
+[11-Jan-2019 12:53:24 UTC] PHP Stack trace:
+[11-Jan-2019 12:53:24 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[11-Jan-2019 12:53:24 UTC] PHP   2. require_once() /home/ubuntu/workspace/wp-admin/admin-ajax.php:22
+[11-Jan-2019 12:53:24 UTC] PHP   3. require_once() /home/ubuntu/workspace/wp-load.php:37
+[11-Jan-2019 12:53:24 UTC] PHP   4. require_once() /home/ubuntu/workspace/wp-config.php:92
+[11-Jan-2019 12:53:24 UTC] PHP   5. include() /home/ubuntu/workspace/wp-settings.php:443
+[11-Jan-2019 12:53:24 UTC] PHP Fatal error:  require_once(): Failed opening required './templates/custom-fields.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/wp-content/themes/filmoteca/functions.php on line 8
+[11-Jan-2019 12:53:24 UTC] PHP Stack trace:
+[11-Jan-2019 12:53:24 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[11-Jan-2019 12:53:24 UTC] PHP   2. require_once() /home/ubuntu/workspace/wp-admin/admin-ajax.php:22
+[11-Jan-2019 12:53:24 UTC] PHP   3. require_once() /home/ubuntu/workspace/wp-load.php:37
+[11-Jan-2019 12:53:24 UTC] PHP   4. require_once() /home/ubuntu/workspace/wp-config.php:92
+[11-Jan-2019 12:53:24 UTC] PHP   5. include() /home/ubuntu/workspace/wp-settings.php:443
+[11-Jan-2019 12:55:24 UTC] PHP Warning:  require_once(./templates/custom-fields.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/wp-content/themes/filmoteca/functions.php on line 8
+[11-Jan-2019 12:55:24 UTC] PHP Stack trace:
+[11-Jan-2019 12:55:24 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[11-Jan-2019 12:55:24 UTC] PHP   2. require_once() /home/ubuntu/workspace/wp-admin/admin-ajax.php:22
+[11-Jan-2019 12:55:24 UTC] PHP   3. require_once() /home/ubuntu/workspace/wp-load.php:37
+[11-Jan-2019 12:55:24 UTC] PHP   4. require_once() /home/ubuntu/workspace/wp-config.php:92
+[11-Jan-2019 12:55:24 UTC] PHP   5. include() /home/ubuntu/workspace/wp-settings.php:443
+[11-Jan-2019 12:55:24 UTC] PHP Fatal error:  require_once(): Failed opening required './templates/custom-fields.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/wp-content/themes/filmoteca/functions.php on line 8
+[11-Jan-2019 12:55:24 UTC] PHP Stack trace:
+[11-Jan-2019 12:55:24 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[11-Jan-2019 12:55:24 UTC] PHP   2. require_once() /home/ubuntu/workspace/wp-admin/admin-ajax.php:22
+[11-Jan-2019 12:55:24 UTC] PHP   3. require_once() /home/ubuntu/workspace/wp-load.php:37
+[11-Jan-2019 12:55:24 UTC] PHP   4. require_once() /home/ubuntu/workspace/wp-config.php:92
+[11-Jan-2019 12:55:24 UTC] PHP   5. include() /home/ubuntu/workspace/wp-settings.php:443
+[11-Jan-2019 13:04:53 UTC] PHP Warning:  require_once(./templates/custom-fields.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/wp-content/themes/filmoteca/functions.php on line 8
+[11-Jan-2019 13:04:53 UTC] PHP Stack trace:
+[11-Jan-2019 13:04:53 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[11-Jan-2019 13:04:53 UTC] PHP   2. require_once() /home/ubuntu/workspace/wp-admin/admin-ajax.php:22
+[11-Jan-2019 13:04:53 UTC] PHP   3. require_once() /home/ubuntu/workspace/wp-load.php:37
+[11-Jan-2019 13:04:53 UTC] PHP   4. require_once() /home/ubuntu/workspace/wp-config.php:92
+[11-Jan-2019 13:04:53 UTC] PHP   5. include() /home/ubuntu/workspace/wp-settings.php:443
+[11-Jan-2019 13:04:53 UTC] PHP Fatal error:  require_once(): Failed opening required './templates/custom-fields.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/wp-content/themes/filmoteca/functions.php on line 8
+[11-Jan-2019 13:04:53 UTC] PHP Stack trace:
+[11-Jan-2019 13:04:53 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[11-Jan-2019 13:04:53 UTC] PHP   2. require_once() /home/ubuntu/workspace/wp-admin/admin-ajax.php:22
+[11-Jan-2019 13:04:53 UTC] PHP   3. require_once() /home/ubuntu/workspace/wp-load.php:37
+[11-Jan-2019 13:04:53 UTC] PHP   4. require_once() /home/ubuntu/workspace/wp-config.php:92
+[11-Jan-2019 13:04:53 UTC] PHP   5. include() /home/ubuntu/workspace/wp-settings.php:443
+[11-Jan-2019 13:04:55 UTC] PHP Warning:  require_once(./templates/custom-fields.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/wp-content/themes/filmoteca/functions.php on line 8
+[11-Jan-2019 13:04:55 UTC] PHP Stack trace:
+[11-Jan-2019 13:04:55 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/users.php:0
+[11-Jan-2019 13:04:55 UTC] PHP   2. require_once() /home/ubuntu/workspace/wp-admin/users.php:11
+[11-Jan-2019 13:04:55 UTC] PHP   3. require_once() /home/ubuntu/workspace/wp-admin/admin.php:31
+[11-Jan-2019 13:04:55 UTC] PHP   4. require_once() /home/ubuntu/workspace/wp-load.php:37
+[11-Jan-2019 13:04:55 UTC] PHP   5. require_once() /home/ubuntu/workspace/wp-config.php:92
+[11-Jan-2019 13:04:55 UTC] PHP   6. include() /home/ubuntu/workspace/wp-settings.php:443
+[11-Jan-2019 13:04:55 UTC] PHP Fatal error:  require_once(): Failed opening required './templates/custom-fields.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/wp-content/themes/filmoteca/functions.php on line 8
+[11-Jan-2019 13:04:55 UTC] PHP Stack trace:
+[11-Jan-2019 13:04:55 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/users.php:0
+[11-Jan-2019 13:04:55 UTC] PHP   2. require_once() /home/ubuntu/workspace/wp-admin/users.php:11
+[11-Jan-2019 13:04:55 UTC] PHP   3. require_once() /home/ubuntu/workspace/wp-admin/admin.php:31
+[11-Jan-2019 13:04:55 UTC] PHP   4. require_once() /home/ubuntu/workspace/wp-load.php:37
+[11-Jan-2019 13:04:55 UTC] PHP   5. require_once() /home/ubuntu/workspace/wp-config.php:92
+[11-Jan-2019 13:04:55 UTC] PHP   6. include() /home/ubuntu/workspace/wp-settings.php:443
+[11-Jan-2019 13:05:39 UTC] PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, function 'add-custom-fields' not found or invalid function name in /home/ubuntu/workspace/wp-includes/class-wp-hook.php on line 286
+[11-Jan-2019 13:05:39 UTC] PHP Stack trace:
+[11-Jan-2019 13:05:39 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/profile.php:0
+[11-Jan-2019 13:05:39 UTC] PHP   2. require_once() /home/ubuntu/workspace/wp-admin/profile.php:18
+[11-Jan-2019 13:05:39 UTC] PHP   3. do_action() /home/ubuntu/workspace/wp-admin/user-edit.php:658
+[11-Jan-2019 13:05:39 UTC] PHP   4. WP_Hook->do_action() /home/ubuntu/workspace/wp-includes/plugin.php:453
+[11-Jan-2019 13:05:39 UTC] PHP   5. WP_Hook->apply_filters() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:310
+[11-Jan-2019 13:05:39 UTC] PHP   6. call_user_func_array:{/home/ubuntu/workspace/wp-includes/class-wp-hook.php:286}() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:286

@@ -5,6 +5,7 @@
  * 
  */
  add_theme_support('post-thumbnails');
+ require_once('templates/custom-fields.php');
 /**
  * Registramos todas nuestras funciones personalizadas
  *   
@@ -45,6 +46,13 @@ function generaltheme_widgets_init() {
        'after_widget' => '</div">'
     ));
 }
+
+function get_author_role( $author_id ) {
+    $user_info = get_userdata( $author_id );
+    return implode(', ', $user_info->roles);    
+}
+
+   
 
 add_action('widgets_init', 'generaltheme_widgets_init');
 ?>
