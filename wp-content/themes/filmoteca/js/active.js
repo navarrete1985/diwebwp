@@ -149,35 +149,83 @@
     }
 
     // :: 9.0 Progress Bar Active Code
-    if ($.fn.circleProgress) {
-        $('#circle').circleProgress({
+    if ($.fn.circleProgress && $('.circle').length) {
+        var el = $('.circle'),
+            inited = false;
+
+        el.circleProgress({
+            value: 0,
             size: 160,
             emptyFill: "rgba(0, 0, 0, .0)",
             fill: '#000000',
             thickness: '3',
             reverse: true
         });
-        $('#circle2').circleProgress({
-            size: 160,
-            emptyFill: "rgba(0, 0, 0, .0)",
-            fill: '#000000',
-            thickness: '3',
-            reverse: true
+
+        el.appear({ force_process: true });
+
+        el.on('appear', function() {
+            if (!inited) {
+                el.each((index, item) => {
+                    $(item).circleProgress({
+                        value: $(item).attr('data-value')
+                    })
+                })
+                inited = true;
+            }
         });
-        $('#circle3').circleProgress({
-            size: 160,
-            emptyFill: "rgba(0, 0, 0, .0)",
-            fill: '#000000',
-            thickness: '3',
-            reverse: true
+
+        // el.on('disappear', () => {
+        //     if (inited) {
+        //         el.circleProgress({ 
+        //             value: 0
+        //         });
+        //         inited = false;                
+        //     }
+        // });
+
+        el.on('circle-animation-progress', function(event, progress, stepValue) {
+            $(this).find('span').html(Math.floor(stepValue * 100) + '<i>%</i>');
         });
-        $('#circle4').circleProgress({
-            size: 160,
-            emptyFill: "rgba(0, 0, 0, .0)",
-            fill: '#000000',
-            thickness: '3',
-            reverse: true
-        });
+
+        // el.on('disapear', function() {
+        //     if (inited) {
+        //         el.circleProgress({ 
+        //             value: 0
+        //         });
+        //         el.circleProgress('redraw');
+        //         inited = false;                
+        //     }
+        // });
+
+        // $('#circle').circleProgress({
+        //     size: 160,
+        //     emptyFill: "rgba(0, 0, 0, .0)",
+        //     fill: '#000000',
+        //     thickness: '3',
+        //     reverse: true
+        // });
+        // $('#circle2').circleProgress({
+        //     size: 160,
+        //     emptyFill: "rgba(0, 0, 0, .0)",
+        //     fill: '#000000',
+        //     thickness: '3',
+        //     reverse: true
+        // });
+        // $('#circle3').circleProgress({
+        //     size: 160,
+        //     emptyFill: "rgba(0, 0, 0, .0)",
+        //     fill: '#000000',
+        //     thickness: '3',
+        //     reverse: true
+        // });
+        // $('#circle4').circleProgress({
+        //     size: 160,
+        //     emptyFill: "rgba(0, 0, 0, .0)",
+        //     fill: '#000000',
+        //     thickness: '3',
+        //     reverse: true
+        // });
     }
 
     // :: 10.0 audioPlayer Active Code
