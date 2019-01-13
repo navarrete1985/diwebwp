@@ -12,8 +12,6 @@
  * 
 */
 
-
-
 /**
  * función que registra todos nuestros script de nuestro tema
 */
@@ -22,10 +20,13 @@ function my_theme_script() {
     wp_register_script('jquery', get_template_directory_uri() . '/js/jquery/jquery-2.2.4.min.js', null, null, false);
     wp_enqueue_script('jquery');
     
-    wp_register_script('pooper-min', get_template_directory_uri() . '/js/bootstrap/popper.min.js', array('jquery'), null, false);
+    wp_register_script('appear-js', get_template_directory_uri() . '/js/jquery/jquery.appear.js', array('jquery'), null, true);
+    wp_enqueue_script('appear-js');
+    
+    wp_register_script('pooper-min', get_template_directory_uri() . '/js/bootstrap/popper.min.js', array('jquery'), null, true);
     wp_enqueue_script('pooper-min');
     
-    wp_register_script('bootstrap-min', get_template_directory_uri() . '/js/bootstrap/bootstrap.min.js', array('jquery'), null, false);
+    wp_register_script('bootstrap-min', get_template_directory_uri() . '/js/bootstrap/bootstrap.min.js', array('jquery'), null, true);
     wp_enqueue_script('bootstrap-min');
     
     wp_register_script('plugins', get_template_directory_uri() . '/js/plugins/plugins.js', array('jquery'), null, true);

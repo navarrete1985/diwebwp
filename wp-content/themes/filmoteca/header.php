@@ -17,5 +17,6 @@
     <!-- Stylesheet -->
     <!--<link rel="stylesheet" href="wp-content/themes/filmoteca/style.css">-->
     <link rel="stylesheet" href="<?= get_stylesheet_uri() ?>">
+    <link rel="stylesheet" href="<?= get_template_directory_uri() ?>/css/mystyle.css">
     <?php wp_head(); ?>
 </head>

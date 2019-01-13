@@ -1,4 +1,4 @@
-<div class="blog-sidebar-area">
+<div class="blog-sidebar-area mt-5">
     <!-- Widget Area -->
     <div class="single-widget-area mb-30">
         <div class="widget-title">
@@ -15,9 +15,10 @@
         </div>
         <div class="widget-content">
             <?php if (!function_exists('dynamic_sidebar') || !dynamic_sidebar('Sidebar Widgets')): ?>
-            <div class='warning'> No está el widget activo.....lo siento</div>
+            <div class='warning'> No está el widget activo.....lo siento </div>
             <?php endif ?>    
         </div>
+    </div>
     </div>
     <!-- Widget Area -->
     <div class="single-widget-area mb-30">
@@ -67,15 +68,7 @@
             ?>
         </div>
     </div>
-     <!--Widget Area -->
-    <div class="single-widget-area mb-30">
-        <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/img/bg-img/add.gif" alt=""></a>
-    </div>
-
-     <!--Widget Area -->
-    <div class="single-widget-area mb-30">
-        <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/img/bg-img/add2.gif" alt=""></a>
-    </div>
+    
 </div>
 
 <!--https://ide.c9.io/neomode/wordpress2108-->

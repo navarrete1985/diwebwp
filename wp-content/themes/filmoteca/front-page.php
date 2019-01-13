@@ -2,15 +2,15 @@
     get_header();
 ?>
 <body>
-    <!-- Preloader -->
-    <!--<div class="preloader d-flex align-items-center justify-content-center">-->
-    <!--    <div class="lds-ellipsis">-->
-    <!--        <div></div>-->
-    <!--        <div></div>-->
-    <!--        <div></div>-->
-    <!--        <div></div>-->
-    <!--    </div>-->
-    <!--</div>-->
+     <!--Preloader -->
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
 
     <!-- ##### Header Area Start ##### -->
     <header class="header-area">
@@ -26,7 +26,7 @@
     </header>
     <!-- ##### Header Area End ##### -->
 
-    <!-- ##### Hero Area Start ##### -->
+    <!-- ##### Hero Area Start #####  Slider inicio, cada single-hero-slide es un elemento del carousel-->
     <section class="hero-area">
         <div class="hero-slides owl-carousel">
             <!-- Single Hero Slide -->
@@ -69,8 +69,8 @@
     <!-- ##### Hero Area End ##### -->
 
     <!-- ##### Latest Albums Area Start ##### -->
-    <section class="latest-albums-area section-padding-100">
-        <div class="container">
+    <section class="oneMusic-buy-now-area has-fluid section-padding-100">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
                     <div class="section-heading style-2">
@@ -87,7 +87,7 @@
                     </div>
                 </div>
             </div>
-
+            <!-- ### CAROUSEL DE ÚLTIMOS POST ###-->
             <div class="row">
                 <div class="col-12">
                     <div class="albums-slideshow owl-carousel">
@@ -143,10 +143,37 @@
                         <!--}-->
                         <!--?>-->
                         
-                        <!--WP_QUERY-->
+                        <!--WP_QUERY ESTE ES EL MODO BUENO PARA HACER LA CONSULTA DE LOS ÚLTIMOS POSTS...SE REHACE ABAJO PARA DAR MEJOR ESTILO-->
+                        <!--< ?php-->
+                        <!--$args = array(-->
+                        <!--    'post_per_page' => 3-->
+                        <!--);-->
+                        
+                        <!--$custom_query = new WP_Query($args);-->
+                        
+                        <!--if ($custom_query->have_posts()):-->
+                        <!--    while($custom_query->have_posts()):-->
+                        <!--        $custom_query->the_post();-->
+                        <!--?>-->
+                             <!--Single Album -->
+                        <!--    <div class="single-album">-->
+                                <!--< ?php $post->post_thumbnail; ?>-->
+                        <!--        <div class="album-info">-->
+                        <!--            <a href="#">-->
+                        <!--                <h5>< ?php the_title(); ?></h5>-->
+                        <!--            </a>-->
+                        <!--            <p> < ?php the_excerpt(); ?></p>-->
+                        <!--        </div>-->
+                        <!--    </div>-->
+                        <!--< ?php-->
+                        <!--endwhile;-->
+                        <!--endif;-->
+                        <!--?>-->
+                        
+                        <!--FORMA PARA DAR ESTILO APROPIADO-->
                         <?php
-                        $args = array(
-                            'post_per_page' => 3
+                        $args = array (
+                            'post_per_page' => 3  
                         );
                         
                         $custom_query = new WP_Query($args);
@@ -155,16 +182,22 @@
                             while($custom_query->have_posts()):
                                 $custom_query->the_post();
                         ?>
-                             <!--Single Album -->
-                            <div class="single-album">
-                                <!--< ?php $post->post_thumbnail; ?>-->
-                                <div class="album-info">
-                                    <a href="#">
-                                        <h5><?php the_title(); ?></h5>
-                                    </a>
-                                    <p> <?php the_excerpt(); ?></p>
-                                </div>
+                        <!--Contenedor de cada uno de los post-->
+                        <div class="single-event-area mb-30">
+                            <div class="event-thumbnail">
+                                <div class="img bg-img pb-70" style="background-image: url(<?= the_post_thumbnail_url() ?>);"></div>
+                                <!--< ?= the_post_thumbnail() ?>-->
                             </div>
+                            <div class="event-text">
+                                <h4><?= the_title() ?></h4>
+                                <div class="event-meta-data">
+                                    <a href="#" class="event-place"><?= the_author() ?></a>
+                                    <a href="#" class="event-date"><?php the_time('j M Y') ?></a>
+                                </div>
+                                <p><?= the_excerpt() ?></p>
+                                <a href="<?= the_permalink() ?>" class="btn see-more-btn">Saber más</a>
+                            </div>
+                        </div>
                         <?php
                         endwhile;
                         endif;
@@ -505,7 +538,7 @@
     <!-- ##### Buy Now Area End ##### -->
 
     <!-- ##### Featured Artist Area Start ##### -->
-    <section class="featured-artist-area section-padding-100 bg-img bg-overlay bg-fixed" style="background-image: url(<? echo get_template_directory_uri(); ?>/img/bg-img/bg-4.jpg);">
+    <section class="featured-artist-area section-padding-100 bg-img bg-overlay bg-fixed" style="background-image: url(<?= get_template_directory_uri(); ?>/img/bg-img/bg-4.jpg);">
         <div class="container">
             <div class="row align-items-end">
                 <div class="col-12 col-md-5 col-lg-4">

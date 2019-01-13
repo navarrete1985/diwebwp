@@ -12,30 +12,18 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                 <div class="col-12 col-md-6">
                     <div class="footer-nav">
                         <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Albums</a></li>
-                            <li><a href="#">Events</a></li>
-                            <li><a href="#">News</a></li>
-                            <li><a href="#">Contact</a></li>
+                            <li><a href="<?php echo get_option('home'); ?>">Inicio</a></li>
+                            <li><a href="<?php echo get_page_link(get_page_by_title('Películas')) ?>">Películas</a></li>
+                            <li><a href="<?php echo get_page_link(get_page_by_title('Galería')) ?>">Galería</a></li>
+                            <li><a href="<?php echo get_page_link(get_page_by_title('Eventos')) ?>">Eventos</a></li>
+                            <li><a href="<?php echo get_page_link(get_page_by_title('Blog')) ?>">Noticias</a></li>
+                            <li><a href="<?php echo get_page_link(get_page_by_title('Contacto')) ?>">Contacto</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
-    <!-- ##### Footer Area Start ##### -->
-
-    <!-- ##### All Javascript Script ##### -->
-    <!-- jQuery-2.2.4 js -->
-    <!--<script src="js/jquery/jquery-2.2.4.min.js"></script>-->
-    <!-- Popper js -->
-    <!--<script src="js/bootstrap/popper.min.js"></script>-->
-    <!-- Bootstrap js -->
-    <!--<script src="js/bootstrap/bootstrap.min.js"></script>-->
-    <!-- All Plugins js -->
-    <!--<script src="js/plugins/plugins.js"></script>-->
-    <!-- Active js -->
-    <!--<script src="js/active.js"></script>-->
     <?php wp_footer(); ?>
 </body>
 

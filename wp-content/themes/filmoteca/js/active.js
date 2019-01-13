@@ -69,7 +69,7 @@
         });
 
         albumSlides.owlCarousel({
-            items: 5,
+            items: 3,
             margin: 30,
             loop: true,
             nav: true,
@@ -82,17 +82,11 @@
                 0: {
                     items: 1
                 },
-                480: {
+                768: {
                     items: 2
                 },
-                768: {
-                    items: 3
-                },
-                992: {
-                    items: 4
-                },
                 1200: {
-                    items: 5
+                    items: 3
                 }
             }
         });
@@ -143,7 +137,7 @@
     if ($.fn.counterUp) {
         $('.counter').counterUp({
             delay: 10,
-            time: 2000
+            time: 1500
         });
     }
 
@@ -211,5 +205,19 @@
         $('.catagory-menu a').removeClass('active');
         $(this).addClass('active');
     })
+    // LINEAR SKILL
+    let elements = $('.skillbar');
+    elements.appear({ force_process: true });
+
+    if (elements.length){
+        elements.each((index, item) => {
+            $(item).on('appear', function() {
+                $(this).find('.skillbar-bar').animate({
+                    width: $(this).attr('data-percent')
+                }, 1500);
+            });
+        });
+    }
+    $.force_appear();
 
 })(jQuery);

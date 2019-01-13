@@ -22,34 +22,6 @@
             <ul>
                 <li><a href="<?php echo get_option('home'); ?>">Inicio</a></li>
                 <li><a href="<?php echo get_page_link(get_page_by_title('Películas')) ?>">Películas</a></li>
-                <!--<li><a href="#">Pages</a>-->
-                <!--    <ul class="dropdown">-->
-                <!--        <li><a href="index.html"></a></li>-->
-                <!--        <li><a href="albums-store.html">Albums</a></li>-->
-                <!--        <li><a href="event.html">Events</a></li>-->
-                <!--        <li><a href="blog.html">News</a></li>-->
-                <!--        <li><a href="contact.html">Contact</a></li>-->
-                <!--        <li><a href="elements.html">Elements</a></li>-->
-                <!--        <li><a href="login.html">Login</a></li>-->
-                <!--        <li><a href="#">Dropdown</a>-->
-                <!--            <ul class="dropdown">-->
-                <!--                <li><a href="#">Even Dropdown</a></li>-->
-                <!--                <li><a href="#">Even Dropdown</a></li>-->
-                <!--                <li><a href="#">Even Dropdown</a></li>-->
-                <!--                <li><a href="#">Even Dropdown</a>-->
-                <!--                    <ul class="dropdown">-->
-                <!--                        <li><a href="#">Deeply Dropdown</a></li>-->
-                <!--                        <li><a href="#">Deeply Dropdown</a></li>-->
-                <!--                        <li><a href="#">Deeply Dropdown</a></li>-->
-                <!--                        <li><a href="#">Deeply Dropdown</a></li>-->
-                <!--                        <li><a href="#">Deeply Dropdown</a></li>-->
-                <!--                    </ul>-->
-                <!--                </li>-->
-                <!--                <li><a href="#">Even Dropdown</a></li>-->
-                <!--            </ul>-->
-                <!--        </li>-->
-                <!--    </ul>-->
-                <!--</li>-->
                 <li><a href="<?php echo get_page_link(get_page_by_title('Galería')) ?>">Galería</a></li>
                 <li><a href="<?php echo get_page_link(get_page_by_title('Eventos')) ?>">Eventos</a></li>
                 <li><a href="<?php echo get_page_link(get_page_by_title('Blog')) ?>">Noticias</a></li>

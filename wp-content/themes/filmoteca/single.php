@@ -28,12 +28,12 @@
             </div>
         </div>
     </header>
-    <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(<?php echo get_template_directory_uri(); ?>/img/bg-img/breadcumb3.jpg);">
+    <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(<?= get_the_post_thumbnail_url() ?>);">
         <div class="bradcumbContent">
             <h2><?php the_title() ?></h2>
         </div>
     </section>
-    <section id=blog-standard class="section blog-standard">
+    <section id=blog-standard class="section blog-standard mb-70">
         <div class=container>
             <div class="row">
                 <div class=col-md-8>
@@ -43,11 +43,11 @@
                     </div>
                     <div class="row blog-post">
                         <div class=col-md-12>
-                            <div class=featured-image>
-                                <img src="<?php echo get_the_post_thumbnail_url(); ?>" class=img-responsive alt="Alternative Text">
-                            </div>
-                            <h2 class=post-title><?php the_title(); ?></h2>
-                            <div class=post-meta>by <a href=#><?php the_author(); ?></a>  <span>|</span>  <a href=#><?php the_time('j M Y');?></a>  <span>|</span> 3 Comments <span>|</span>  <a href=#>Categorías</a>
+                            <!--<div class=featured-image>-->
+                            <!--    <img src="< ?php echo get_the_post_thumbnail_url(); ?>" class=img-responsive alt="Alternative Text">-->
+                            <!--</div>-->
+                            <!--<h2 class=post-title>< ?php the_title(); ?></h2>-->
+                            <div class="post-meta mb-3">by <a href=#><?php the_author(); ?></a>  <span>|</span>  <a href=#><?php the_time('j M Y');?></a>  <span>|</span> 3 Comments <span>|</span>  <a href=#>Categorías</a>
                             </div>
                             <div class=post-content>
                                 <?php the_content(); ?>

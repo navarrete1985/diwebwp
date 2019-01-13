@@ -21,10 +21,17 @@
                 </td>
             </tr>
             <tr>
-                <th><label for="twitter">Facebook</label></th>
+                <th><label for="facebook">Facebook</label></th>
                 <td>
                     <input type="text" name="facebook" id="facebook" value="<?php echo esc_attr( get_the_author_meta( 'facebook', $user->ID ) ); ?>" class="regular-text" /><br />
                     <span class="description">Please enter your Facebook page.</span>
+                </td>
+            </tr>
+            <tr>
+                <th><label for="instagram">Instagram</label></th>
+                <td>
+                    <input type="text" name="instagram" id="instagram" value="<?php echo esc_attr( get_the_author_meta( 'instagram', $user->ID ) ); ?>" class="regular-text" /><br />
+                    <span class="description">Please enter your Instagram page.</span>
                 </td>
             </tr>
             <tr>
@@ -98,6 +105,7 @@
         
         update_usermeta( $user_id, 'facebook', $_POST['facebook'] );
         update_usermeta( $user_id, 'twitter', $_POST['twitter'] );
+        update_usermeta( $user_id, 'instagram', $_POST['instagram'] );
         update_usermeta( $user_id, 'linkedin', $_POST['linkedin'] );
         
         update_usermeta( $user_id, 'skill1', $_POST['skill1'] );
