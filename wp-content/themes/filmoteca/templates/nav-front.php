@@ -26,6 +26,7 @@
                 <li><a href="<?php echo get_page_link(get_page_by_title('Eventos')) ?>">Eventos</a></li>
                 <li><a href="<?php echo get_page_link(get_page_by_title('Blog')) ?>">Noticias</a></li>
                 <li><a href="<?php echo get_page_link(get_page_by_title('Contacto')) ?>">Contacto</a></li>
+                <li><a href="<?php echo get_page_link(get_page_by_title('Archivos')) ?>">Archivos</a></li>
             </ul>
 
             <!-- Login/Register & Cart Button -->

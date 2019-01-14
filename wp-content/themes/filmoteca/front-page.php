@@ -172,8 +172,27 @@
                         
                         <!--FORMA PARA DAR ESTILO APROPIADO-->
                         <?php
-                        $args = array (
-                            'post_per_page' => 3  
+                        $args = array(
+                            'post_type' => array ('post'),
+                            'posts_per_page' => 5,
+                            // Excluir todos los tipos de formato de post siguientes para que no salgan en el post destacado
+                            'tax_query' => array( 
+                                                array(
+                                                    'taxonomy' => 'post_format',
+                                                    'field' => 'slug',
+                                                    'terms' => array(
+                                                            'post-format-gallery', 
+                                                            'post-format-link', 
+                                                            'post-format-image', 
+                                                            'post-format-quote', 
+                                                            'post-format-audio', 
+                                                            'post-format-video'
+                                                    ),
+                                                    'operator' => 'NOT IN'
+                                                ) 
+                    
+                        
+                            )
                         );
                         
                         $custom_query = new WP_Query($args);

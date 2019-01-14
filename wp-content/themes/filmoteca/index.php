@@ -40,43 +40,91 @@
 
     <!-- ##### Blog Area Start ##### -->
     <div class="blog-area section-padding-100">
+        <div class='container'>
+            <div class='row'>
+                <div class="col-12 mt-50">
+                    <!--Primer loop para el post destacado, nos guardamos el id de este post para despues no mostrarlo-->
+                    <?php
+                        $args = array(
+                            'post_type' => array ('post'),
+                            'posts_per_page' => 1,
+                            // Excluir todos los tipos de formato de post siguientes para que no salgan en el post destacado
+                            'tax_query' => array( 
+                                                array(
+                                                    'taxonomy' => 'post_format',
+                                                    'field' => 'slug',
+                                                    'terms' => array(
+                                                            'post-format-gallery', 
+                                                            'post-format-link', 
+                                                            'post-format-image', 
+                                                            'post-format-quote', 
+                                                            'post-format-audio', 
+                                                            'post-format-video'
+                                                    ),
+                                                    'operator' => 'NOT IN'
+                                                ) 
+                    
+                        
+                            )
+                        );
+                        $post_destacado = new WP_Query($args);
+                        if ($post_destacado->have_posts()):
+                            $post_destacado->the_post();
+                            echo the_title();
+                            echo the_author();
+                            the_post_thumbnail();
+                            $id_destacado = $post->ID;
+                        endif;
+                        wp_reset_postdata();
+                    ?>
+                </div>
+            </div>
+        </div>
         <div class="container">
             <div class="row">
                 <div class="col-12 col-lg-9">
-                    
-                    <?php if(have_posts()): ?>
-                    <?php while(have_posts()): ?>
-                    <?php the_post() ?>
+                    <!--2º loop donde vamos a sacar los últimos 5 post en el que excluimos el post destacado-->
+                    <?php
+                        $args = array(
+                            'posts_per_page' => 5,
+                            'post__not_in'  => array($id_destacado)
+                        );
+                        $custom_query = new WP_Query($args);
+                    ?>
+                    <?php if($custom_query->have_posts()): ?>
+                    <?php while($custom_query->have_posts()): ?>
+                    <?php $custom_query->the_post() ?>
                     
                     <!-- Single Post Start -->
-                    <div class="single-blog-post mb-100 wow fadeInUp" data-wow-delay="100ms">
+                    <!--<div class="single-blog-post mb-100 wow fadeInUp" data-wow-delay="100ms">-->
                         <!-- Post Thumb -->
-                        <div class="blog-post-thumb mt-30">
+                    <!--    <div class="blog-post-thumb mt-30">-->
                             <!--<a href="#"><img src="img/bg-img/blog1.jpg" alt=""></a>-->
-                            <?php the_post_thumbnail(); ?>
+                    <!--        < ?php the_post_thumbnail(); ?>-->
                             <!-- Post Date -->
-                            <div class="post-date">
-                                <span><?php echo get_the_date('d'); ?></span>
-                                <span><?php echo get_the_date('M Y'); ?></span>
-                            </div>
-                        </div>
+                    <!--        <div class="post-date">-->
+                    <!--            <span>< ?php echo get_the_date('d'); ?></span>-->
+                    <!--            <span>< ?php echo get_the_date('M Y'); ?></span>-->
+                    <!--        </div>-->
+                    <!--    </div>-->
 
                         <!-- Blog Content -->
-                        <div class="blog-content">
+                    <!--    <div class="blog-content">-->
                             <!-- Post Title -->
-                            <a href="<?php the_permalink(); ?>" class="post-title"><?php the_title(); ?></a>
+                    <!--        <a href="< ?php the_permalink(); ?>" class="post-title"><?php the_title(); ?></a>-->
                             <!-- Post Meta -->
-                            <div class="post-meta d-flex mb-30">
-                                <p class="post-author">By<a href="#"> <?php echo the_author(); ?></a></p>
-                                <p class="tags">in<a href="#"> <?php echo the_category(); ?></a></p>
-                                <p class="tags"><a href="#">2 Comments</a></p>
-                            </div>
+                    <!--        <div class="post-meta d-flex mb-30">-->
+                    <!--            <p class="post-author">By<a href="#"> < ?php echo the_author(); ?></a></p>-->
+                    <!--            <p class="tags">in<a href="#"> < ?php echo the_category(); ?></a></p>-->
+                    <!--            <p class="tags"><a href="#">2 Comments</a></p>-->
+                    <!--        </div>-->
                             <!-- Post Excerpt -->
                             <!--<p>Pellentesque sit amet velit a libero viverra porta non eu justo. Vivamus mollis metus sem, ac sodales dui lobortis. Pellentesque sit amet velit a libero viverra porta non eu justo. Vivamus mollis metus sem, ac sodales dui lobortis.</p>-->
-                            <?php the_excerpt(); ?>
-                        </div>
-                    </div>
-                    
+                    <!--        < ?php the_excerpt(); ?>-->
+                    <!--    </div>-->
+                    <!--</div>-->
+                        <?php get_template_part('templates/content', get_post_format()); ?> <!--Con get_post_format(id_post) -> recogemos el formato de post para poder repesentarlo-->
+                        <!--En nuestros templates tenemos que crear una plantilla por cada uno de los formatos de post que tengamos-->
                     <?php endwhile; ?>
                     <?php endif; ?>
                     
