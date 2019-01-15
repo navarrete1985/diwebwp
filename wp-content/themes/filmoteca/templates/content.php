@@ -20,6 +20,7 @@
             <p class="post-author">By<a href="#"> <?php echo the_author(); ?></a></p>
             <p class="tags">in<a href="#"> <?php echo the_category(); ?></a></p>
             <p class="tags"><a href="#">2 Comments</a></p>
+            <p class="tags"><a href="#"><? echo the_post_views() ?></a></p>
         </div>
         <!-- Post Excerpt -->
         <!--<p>Pellentesque sit amet velit a libero viverra porta non eu justo. Vivamus mollis metus sem, ac sodales dui lobortis. Pellentesque sit amet velit a libero viverra porta non eu justo. Vivamus mollis metus sem, ac sodales dui lobortis.</p>-->

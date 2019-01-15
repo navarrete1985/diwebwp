@@ -63,7 +63,7 @@
 
 /* LINEAR SKILL BAR */
 .skillbar-bar {
-    background: #2c3e50 !important;
+    background: #212529 !important;
 }
 
 .skillbar {
@@ -99,7 +99,7 @@
 }
 
 .skillbar-bar {
-	height: 5px;
+	height: 3px;
 	width: 0px;
 	background: #ffffff;
 	border-radius: 3px;
@@ -114,4 +114,29 @@
     line-height: 24px;
     color: #ffffff;
     color: rgba(0, 0, 0, 0.4);
+}
+
+.btn-sm {
+    min-width: unset !important;
+}
+
+.filter-bw {
+    filter: grayscale(80%);
+}
+
+.w-90 {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.mt-200 {
+    margin-top: 200px;
+}
+
+.mt-150 {
+    margin-top: 150px;
+}
+
+.breadcumb-area {
+    height: 70vh;
 }

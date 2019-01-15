@@ -63,17 +63,30 @@
                     <!--    );-->
                     <!--    wp_get_archives( $args );-->
                     <!--?>-->
-                    <div class="col-md-10">
-                        <div class="oneMusic-buttons-area fadeInUp">
-                            <a class="btn oneMusic-btn" href=#>Categorías</a>
-                            <a class="btn oneMusic-btn" href=#>Categorías</a>
-                            <a class="btn oneMusic-btn" href=#>Categorías</a>
-                            <a class="btn oneMusic-btn" href=#>Categorías</a>
-                            <a class="btn oneMusic-btn" href=#>Categorías</a>
+                    <div class='row'>
+                        <div class="col-md-3">
+                            <div class="oneMusic-buttons-area fadeInUp">
+                                <a class="btn oneMusic-btn btn-sm" href=#>Categorías</a>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="oneMusic-buttons-area fadeInUp">
+                                <a class="btn oneMusic-btn btn-sm" href=#>Categorías</a>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="oneMusic-buttons-area fadeInUp">
+                                <a class="btn oneMusic-btn btn-sm" href=#>Categorías</a>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="oneMusic-buttons-area fadeInUp">
+                                <a class="btn oneMusic-btn btn-sm" href=#>Categorías</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-2 ml-5">
                     <div class="load-more-btn text-center wow fadeInUp">
                         <a class="btn oneMusic-btn" href=#>Todo</a>
                     </div>
@@ -91,7 +104,6 @@
                           <th scope="col">Fecha</th>
                           <th scope="col">Autor</th>
                           <th scope="col">Título</th>
-                          <!--<th scope="col">Handle</th>-->
                         </tr>
                       </thead>
                       <tbody>
