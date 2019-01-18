@@ -35,6 +35,9 @@ function my_theme_script() {
     
     wp_register_script('active', get_template_directory_uri() . '/js/active.js', array('jquery'), null, true);
     wp_enqueue_script('active');
+    
+    wp_register_script('masonry', get_template_directory_uri() . '/js/plugins/masonry-docs.min.js', array('jquery'), null, true);
+    wp_enqueue_script('masonry');
 }
 
 add_action('wp_enqueue_scripts', 'my_theme_script');
@@ -54,7 +57,16 @@ function get_author_role( $author_id ) {
     return implode(', ', $user_info->roles);    
 }
 
-   
+/* Listado de tags para la plantilla archives */
+    
+function list_tags() {
+    if ( is_page( 'archives' ) ) {  // Quitar si lo queremos invocar en más plantillas
+        $tags = get_tags( array('orderby' => 'count', 'order' => 'DESC', 'number' => 30) );
+        foreach (  $tags as $tag ) {
+            echo '<i class="fa fa-tag mygrey"></i>&nbsp;<a href="' . get_tag_link ($tag->term_id) . '" rel="tag">' . $tag->name . ' <span class="heavyblue pull-right">' . $tag->count . '</span></a><br />';
+        }
+    }
+}
 
 add_action('widgets_init', 'generaltheme_widgets_init');
 ?>

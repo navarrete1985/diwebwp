@@ -58,6 +58,7 @@
                         </div>
                     </div>
                 </div>
+                <?= comments_template() ?>
                 <div class="col-md-4 col-md-offset-0 mt-5">
                    <?php get_sidebar(); ?>
                 </div>
