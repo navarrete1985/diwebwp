@@ -69,4 +69,31 @@ function list_tags() {
 }
 
 add_action('widgets_init', 'generaltheme_widgets_init');
+
+
+/*-----------------------COMENTARIOS------------------*/
+/*$fields es un array que contiene todos los campos del formulario, lo que tenemos que hacer es filtrar y devolverlo
+para eliminarlo usamos unset($fields['url'])*/
+function remove_url_field($fields) {
+    unset($fields['url']);
+    return $fields;
+}
+
+/*Para cambiar el orden de los campos del formulario*, podríamos hacer esto en la misma función anterior, pero
+para verlo mejor semánticamente lo vamos a hacer con esta función*/
+function push_comment_to_bottom($fields) {
+    $comment = $fields['comment']; //Guardamos el campo comentario
+    unset($fields['comment']); //Lo quitamos de nuestros campos
+    $fields['comment'] = $comment; //Lo volvemos a añadir para que esté en el fondo
+    $content = '<div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="policy">
+                    <label class="form-check-label" for="policy">Acepta las <a href="#">políticas de privacidad</a> de la página</label>
+              </div>';
+    $fields['policy'] = $content;
+    return $fields;
+    
+}
+
+add_filter('comment_form_default_fields', 'remove_url_field');
+add_filter('comment_form_fields', 'push_comment_to_bottom');//Para esto podríamos usar el hook anterior...pero vemos que lo podemos enganchar con este también
 ?>

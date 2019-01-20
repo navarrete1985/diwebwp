@@ -140,3 +140,8 @@
 .breadcumb-area {
     height: 70vh;
 }
+
+.masonry-item {
+    width: calc(33% - 32px);
+    margin: 16px;
+}

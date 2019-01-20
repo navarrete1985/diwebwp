@@ -51,6 +51,7 @@
                             </div>
                             <div class=post-content>
                                 <?php the_content(); ?>
+                                <?= comments_template() ?>
                             </div>
                             <!--<div id=disqus_thread></div>-->
                             <noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript rel=nofollow>comments powered by Disqus.</a>
@@ -58,7 +59,7 @@
                         </div>
                     </div>
                 </div>
-                <?= comments_template() ?>
+                
                 <div class="col-md-4 col-md-offset-0 mt-5">
                    <?php get_sidebar(); ?>
                 </div>

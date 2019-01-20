@@ -268,4 +268,9 @@
     }
     $.force_appear();
 
+    // MASONRY LIBRARIE
+    let masonry = $('.content-masonry').masonry({
+        'iten-selector': 'masonry-item'
+    });
+    masonry.masonry();
 })(jQuery);

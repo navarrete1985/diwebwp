@@ -38,8 +38,40 @@ Template Name: Archivos
         </div>
     </section>
     <!---->
-    <section class='content'>
+    <section class='content content-masonry'>
+        <?php
         
+            // Últimas entradas
+            $title = 'Últimas entradas';
+            $args = array (
+                'type'            => 'postbypost',
+                'show_post_count' => 1,
+                'post_type'       => 'post',
+                'after'           => '<hr class="hrsoft">',
+                'echo'            => false
+            );
+            $content =  wp_get_archives( $args );
+            include( locate_template( 'templates/content-archives.php', false, false ) );
+            
+            // Categorías
+            $title = 'Categorías';
+            $content = wp_list_categories('title_li=&show_count=1&echo=0');
+            $content = preg_replace('/<\/a> \(([0-9]+)\)/', ' <span class="heavyblue pull-right">\\1</span></a>', $content);
+            include( locate_template( 'templates/content-archives.php', false, false ) );
+            
+            // Tags
+            $title = 'Tags';
+            $tags = get_tags();
+            if ($tags) {
+                $content = '<ul class="tags">';
+                foreach ($tags as $tag) {
+                    $content .= '<li><a href="' . get_tag_link( $tag->term_id ) . '" title="' . sprintf( __( "View all posts in %s" ), $tag->name ) . '" ' . '>' . $tag->name.'</a></li>';
+                }
+                $content .= '</ul>';
+            }
+            include( locate_template( 'templates/content-archives.php', false, false ) );
+            
+        ?>
     </section>
 <?php
     get_footer();

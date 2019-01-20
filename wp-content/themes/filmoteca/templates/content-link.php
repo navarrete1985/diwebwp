@@ -1,1 +1,1 @@
-post de tipo imagen
+post de tipo link<br>
