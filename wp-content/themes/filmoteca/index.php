@@ -118,8 +118,12 @@
                 <div class="col-12 col-lg-9">
                     <!--2º loop donde vamos a sacar los últimos 5 post en el que excluimos el post destacado-->
                     <?php
+                        //Preguntamos por que página estamos para mostrar puesto que estamos haciendo paginación
+                        $paged = get_query_var('paged') > 1 ? get_query_var('paged') : 1;
                         $args = array(
-                            'posts_per_page' => 5,
+                            'posts_per_page' => 4,
+                            'paged'          => $paged,
+                            'orderby'        => 'date',
                             'post__not_in'  => array($id_destacado)
                         );
                         $custom_query = new WP_Query($args);
@@ -246,9 +250,15 @@
                     <div class="oneMusic-pagination-area wow fadeInUp" data-wow-delay="300ms">
                         <nav>
                             <ul class="pagination">
-                                <li class="page-item active"><a class="page-link" href="#">01</a></li>
-                                <li class="page-item"><a class="page-link" href="#">02</a></li>
-                                <li class="page-item"><a class="page-link" href="#">03</a></li>
+                                <!--<li class="page-item active"><a class="page-link" href="#">01</a></li>-->
+                                <!--<li class="page-item"><a class="page-link" href="#">02</a></li>-->
+                                <!--<li class="page-item"><a class="page-link" href="#">03</a></li>-->
+                                <?php the_posts_pagination(array(
+                                        'mid_size'  => 2,
+                                        'prev_text' => __('Anterior', 'textdomain'), //Echo especial para poder usar el multi lenguaje
+                                        'next_text' => __('Siguiente', 'textdomain')
+                                    ));
+                                ?>
                             </ul>
                         </nav>
                     </div>

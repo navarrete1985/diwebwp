@@ -52,16 +52,15 @@ function generaltheme_widgets_init() {
     ));
 }
 
-function get_author_role( $author_id ) {
+function get_author_role($author_id) {
     $user_info = get_userdata( $author_id );
     return implode(', ', $user_info->roles);    
 }
 
 /* Listado de tags para la plantilla archives */
-    
 function list_tags() {
-    if ( is_page( 'archives' ) ) {  // Quitar si lo queremos invocar en más plantillas
-        $tags = get_tags( array('orderby' => 'count', 'order' => 'DESC', 'number' => 30) );
+    if (is_page('archives')) {  // Quitar si lo queremos invocar en más plantillas
+        $tags = get_tags(array('orderby' => 'count', 'order' => 'DESC', 'number' => 30));
         foreach (  $tags as $tag ) {
             echo '<i class="fa fa-tag mygrey"></i>&nbsp;<a href="' . get_tag_link ($tag->term_id) . '" rel="tag">' . $tag->name . ' <span class="heavyblue pull-right">' . $tag->count . '</span></a><br />';
         }
@@ -96,4 +95,28 @@ function push_comment_to_bottom($fields) {
 
 add_filter('comment_form_default_fields', 'remove_url_field');
 add_filter('comment_form_fields', 'push_comment_to_bottom');//Para esto podríamos usar el hook anterior...pero vemos que lo podemos enganchar con este también
+
+// CONTADOR DE VISITAS
+function get_num_visits($post_id) {
+    $numvisit = 1;
+    if (!add_post_meta($post_id, 'numvisit', $numvisit, true)) {
+       $numvisit = get_post_meta($post_id, 'numvisit', true) + 1;
+       update_post_meta($post_id, 'numvisit', $numvisit);
+    }
+    return $numvisit .( $numvisit == 1 ? ' Visita' : ' Visitas');
+}
+
+// Función para cambiar la longitud de the_excerpt
+function excerpt($limit) {
+  $excerpt = explode(' ', get_the_excerpt(), $limit);
+  if (count($excerpt)>=$limit) {
+    array_pop($excerpt);
+    $excerpt = implode(" ",$excerpt).'[...]';
+  } else {
+    $excerpt = implode(" ",$excerpt);
+  }	
+  $excerpt = preg_replace('`[[^]]*]`','',$excerpt);
+  return $excerpt;
+} 
+
 ?>

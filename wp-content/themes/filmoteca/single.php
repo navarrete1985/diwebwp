@@ -47,10 +47,11 @@
                             <!--    <img src="< ?php echo get_the_post_thumbnail_url(); ?>" class=img-responsive alt="Alternative Text">-->
                             <!--</div>-->
                             <!--<h2 class=post-title>< ?php the_title(); ?></h2>-->
-                            <div class="post-meta mb-3">by <a href=#><?php the_author(); ?></a>  <span>|</span>  <a href=#><?php the_time('j M Y');?></a>  <span>|</span> 3 Comments <span>|</span>  <a href=#>Categorías</a>
+                            <div class="post-meta mb-3">by <a href=#><?php the_author(); ?></a>  <span>|</span>  <a href=#><?php the_time('j M Y');?></a>  <span>|</span> 3 Comments <span>|</span> <span></span> <?= get_num_visits($post->ID) ?><span>|</span>  <a href=#>Categorías</a>
                             </div>
                             <div class=post-content>
                                 <?php the_content(); ?>
+                                <?= get_template_part('templates/content', 'related') ?>
                                 <?= comments_template() ?>
                             </div>
                             <!--<div id=disqus_thread></div>-->

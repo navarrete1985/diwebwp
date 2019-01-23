@@ -145,3 +145,55 @@
     width: calc(33% - 32px);
     margin: 16px;
 }
+
+.prev.pag-numbers {
+    
+}
+
+.next.pag-numbers {
+    
+}
+
+.circle-image img{
+    border-radius: 50%;
+}
+
+.resume-post {
+    flex: 1 1 auto;
+    position: relative;
+    display: flex !important;
+    flex-flow: column wrap !important;
+    min-height:  100% !important;
+}
+
+.resume-post > a {
+    margin-top: auto !important;
+}
+
+.depth-2 {
+    margin-left: 16px !important;
+}
+
+.depth-3 {
+    margin-left: 32px !important;
+}
+
+.depth-4 {
+    margin-left: 48px !important;
+}
+
+.depth-5 {
+    margin-left: 64px !important;
+}
+
+li.comment, .comment li {
+    list-style-type: none;
+}
+
+.reply {
+    margin-bottom: 16px;
+}
+
+.comment-body > p {
+    margin-bottom: 0 !important;
+}
