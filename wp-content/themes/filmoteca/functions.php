@@ -128,6 +128,7 @@ function year_func() {
 }
 add_shortcode('year', 'year_func');
 
+// Función callback para otro shortcode [salute]
 function salute_func($atts, $content = 'asdasd') {
     $name = shortcode_atts([ 'name' => 'Antoñico'], $atts);
     return '<h1>Hola ' . $name['name'] . ' eres un '. $content . '</h1>';
