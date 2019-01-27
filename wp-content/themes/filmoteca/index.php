@@ -248,19 +248,12 @@
 
                     <!-- Pagination -->
                     <div class="oneMusic-pagination-area wow fadeInUp" data-wow-delay="300ms">
-                        <nav>
-                            <ul class="pagination">
-                                <!--<li class="page-item active"><a class="page-link" href="#">01</a></li>-->
-                                <!--<li class="page-item"><a class="page-link" href="#">02</a></li>-->
-                                <!--<li class="page-item"><a class="page-link" href="#">03</a></li>-->
-                                <?php the_posts_pagination(array(
-                                        'mid_size'  => 2,
-                                        'prev_text' => __('Anterior', 'textdomain'), //Echo especial para poder usar el multi lenguaje
-                                        'next_text' => __('Siguiente', 'textdomain')
-                                    ));
-                                ?>
-                            </ul>
-                        </nav>
+                        <?php the_posts_pagination(array(
+                                'mid_size'  => 2,
+                                'prev_text' => __('Anterior', 'textdomain'), //Echo especial para poder usar el multi lenguaje
+                                'next_text' => __('Siguiente', 'textdomain')
+                            ));
+                        ?>
                     </div>
                 </div>
 
