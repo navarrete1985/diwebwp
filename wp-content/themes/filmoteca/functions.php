@@ -119,4 +119,19 @@ function excerpt($limit) {
   return $excerpt;
 } 
 
+/**
+ * Función callback para el shortcode [year]
+ */
+function year_func() {
+    $year = date('Y');
+    return '<h1>' . $year . '</h1>';
+}
+add_shortcode('year', 'year_func');
+
+function salute_func($atts, $content = 'asdasd') {
+    $name = shortcode_atts([ 'name' => 'Antoñico'], $atts);
+    return '<h1>Hola ' . $name['name'] . ' eres un '. $content . '</h1>';
+}
+add_shortcode('salute', 'salute_func');
+
 ?>
