@@ -62,6 +62,8 @@ function reg_post_type_review() {
 function add_cat_panels() {
     register_taxonomy_for_object_type('category', 'filmoteca_review');
     register_taxonomy_for_object_type('post_tag', 'filmoteca_review');
+    wp_enqueue_style( 'filmoteca_review', plugins_url( './css/style.css', __FILE__ ) );
+    wp_enqueue_script( 'filmoteca_review', plugins_url( 'js/script.js', __FILE__ ),  array('jquery'), null, true);
 }
 
 /**
@@ -103,100 +105,148 @@ function filmoteca_review_meta_box_callback($post) {
     $storyline = get_post_meta($post->ID, 'review_storyline', true);
     $rating = get_post_meta($post->ID, 'review_rating', true);
     ?>
+    
     <!--Pintamos nuestro formulario en el backend-->
-    <div class='content'>
+    <div class='content-filmoteca'>
         <fieldset>
             <div class='form-group'>
-                <label for='review_original_title'><?= __('Título original') ?></label>
+                <label class='title' for='review_original_title'><?= __('Título original') ?></label>
                 <input type="text" name="review_original_title" value="<?= $original ?>"/>
             </div>
         </fieldset>
         <fieldset>
             <div class='form-group'>
-                <label for='review_year'><?= __('Año de producción') ?></label>
+                <label class='title' for='review_year'><?= __('Año de producción') ?></label>
                 <input type="number" name="review_year" value="<?= $year ?>"/>
             </div>
         </fieldset>
         <fieldset>
             <div class='form-group'>
-                <label for='review_director'><?= __('Director') ?></label>
+                <label class='title' for='review_director'><?= __('Director') ?></label>
                 <input type="text" name="review_director" value="<?= $director ?>"/>
             </div>
         </fieldset>
         <fieldset>
             <div class='form-group'>
-                <label for='review_casting'><?= __('Reparto') ?></label>
-                <input type="text" name="review_casting"/>
-                <button type='button' class='btn-add-actor'>añadir</button>
-                <?php foreach($casting as $actor){ ?>
-                        <div class='item'>
-                            <input type="hidden" name="actor[]" value="<?= $actor ?>"/>
-                            <span><?= $actor ?></span>
-                            <span type='button' class='delete-actor'>&#10802;</span>
-                        </div>
-                <?php } ?> 
+                <label class='title' for='review_casting'><?= __('Reparto') ?></label>
+                <input type="text" id='review-actor'/>
+                <div class='btn-add-actor dashicons-before dashicons-plus-alt'></div>
+                <div class='content-casting'>
+                    <!--Los valores almacenados como array que saneamos los tenemos que recoger como si fuese un array dentro de otro-->
+                    <?php foreach($casting[0] as $actor){ ?>
+                        <span class='item'>
+                            <input type="hidden" name="review_casting[]" value="<?= $actor ?>"/>
+                            <span class='name-author actor'><?= $actor ?></span>
+                            <span type='button' class='delete-actor dashicons-before dashicons-no-alt'></span>
+                        </span>
+                    <?php } ?> 
+                </div>
             </div>
         </fieldset>
         <fieldset>
             <div class='form-group'>
-                <label for='review_runtime'><?= __('Duración') ?></label>
+                <label class='title' for='review_runtime'><?= __('Duración') ?></label>
                 <input type="number" name="review_runtime" value="<?= $runtime ?>"/>
             </div>
         </fieldset>
-        <fieldset>
-            <label><input type="checkbox" name="review_genre[]" value="terror" <?= in_array("terror", $genre) ? 'checked' : '' ?>/> <?= __('Terror') ?></label>
-            <label><input type="checkbox" name="review_genre[]" value="accion"  <?= in_array("accion", $genre)  ? 'checked' : '' ?>/> <?= __('Accion') ?></label>
-            <label><input type="checkbox" name="review_genre[]" value="desconocido"  <?= in_array("desconocido", $genre)  ? 'checked' : '' ?>/> <?= __('Desconocido') ?></label>
-            <label><input type="checkbox" name="review_genre[]" value="sci-fi"  <?= in_array("sci-fi", $genre) ? 'checked' : '' ?>/> <?= __('Sci-fi') ?></label>
-            <label><input type="checkbox" name="review_genre[]" value="aventura"  <?= in_array("aventura", $genre) ? 'checked' : '' ?>/> <?= __('Aventura') ?></label>
-            <label><input type="checkbox" name="review_genre[]" value="documental"  <?= in_array("documental", $genre) ? 'checked' : '' ?>/> <?= __('Documental') ?></label>
-            <label><input type="checkbox" name="review_genre[]" value="fantastico"  <?= in_array("fantastico", $genre) ? 'checked' : '' ?>/> <?= __('Fantastico') ?></label>
-            <label><input type="checkbox" name="review_genre[]" value="drama" <?= in_array("drama", $genre) ? 'checked' : '' ?> /> <?= __('Drama') ?></label>
-            <label><input type="checkbox" name="review_genre[]" value="cinenegro"  <?= in_array("cinenegro", $genre) ? 'checked' : '' ?>/> <?= __('Cinenegro') ?></label>
-            <label><input type="checkbox" name="review_genre[]" value="infantil"  <?= in_array("infantil", $genre)  ? 'checked' : ''  ?>/> <?= __('Infantil') ?></label>
-            <label><input type="checkbox" name="review_genre[]" value="belico" <?= in_array("belico", $genre) ? 'checked' : ''  ?> /> <?= __('Belico') ?></label>
-            <label><input type="checkbox" name="review_genre[]" value="comedia"  <?= in_array("comedia", $genre) ? 'checked' : ''  ?>/> <?= __('Comedia') ?></label>
-            <label><input type="checkbox" name="review_genre[]" value="romance"  <?= in_array("romance", $genre) ? 'checked' : ''  ?>/> <?= __('Romance') ?></label>
-            <label><input type="checkbox" name="review_genre[]" value="intriga" <?= in_array("intriga", $genre)  ? 'checked' : ''  ?>/> <?= __('Intriga') ?></label>
-            <label><input type="checkbox" name="review_genre[]" value="musical"  <?= in_array("musical", $genre)  ? 'checked' : ''  ?>/> <?= __('Musical') ?></label>
-            <label><input type="checkbox" name="review_genre[]" value="serie"  <?= in_array("serie", $genre)  ? 'checked' : ''  ?>/> <?= __('Serie') ?></label>
-            <label><input type="checkbox" name="review_genre[]" value="weterm"  <?= in_array("weterm", $genre)  ? 'checked' : ''  ?>/> <?= __('Weterm') ?></label>
-            <label><input type="checkbox" name="review_genre[]" value="thriller"  <?= in_array("thriller", $genre)  ? 'checked' : ''  ?>/> <?= __('Thriller') ?></label>
-        </fieldset>
-        <fieldset>
-            <div class='form-group'>
-                <label for='review_storyline'><?= __('Sinopsis') ?></label>
-                <textarea type="text" name="review_storyline" value="<?= $storyline ?>"/><?= $storyline ?></textarea>
+        <fieldset class='genre'>
+            <div class='title'>Géneros</div>
+            <div class='container'>
+                <label><input type="checkbox" name="review_genre[]" value="terror" <?= in_array("terror", $genre[0]) ? 'checked' : '' ?>/> <?= __('Terror') ?></label>
+                <label><input type="checkbox" name="review_genre[]" value="accion"  <?= in_array("accion", $genre[0])  ? 'checked' : '' ?>/> <?= __('Accion') ?></label>
+                <label><input type="checkbox" name="review_genre[]" value="desconocido"  <?= in_array("desconocido", $genre[0])  ? 'checked' : '' ?>/> <?= __('Desconocido') ?></label>
+                <label><input type="checkbox" name="review_genre[]" value="sci-fi"  <?= in_array("sci-fi", $genre[0]) ? 'checked' : '' ?>/> <?= __('Sci-fi') ?></label>
+                <label><input type="checkbox" name="review_genre[]" value="aventura"  <?= in_array("aventura", $genre[0]) ? 'checked' : '' ?>/> <?= __('Aventura') ?></label>
+                <label><input type="checkbox" name="review_genre[]" value="documental"  <?= in_array("documental", $genre[0]) ? 'checked' : '' ?>/> <?= __('Documental') ?></label>
+                <label><input type="checkbox" name="review_genre[]" value="fantastico"  <?= in_array("fantastico", $genre[0]) ? 'checked' : '' ?>/> <?= __('Fantastico') ?></label>
+                <label><input type="checkbox" name="review_genre[]" value="drama" <?= in_array("drama", $genre[0]) ? 'checked' : '' ?> /> <?= __('Drama') ?></label>
+                <label><input type="checkbox" name="review_genre[]" value="cinenegro"  <?= in_array("cinenegro", $genre[0]) ? 'checked' : '' ?>/> <?= __('Cinenegro') ?></label>
+                <label><input type="checkbox" name="review_genre[]" value="infantil"  <?= in_array("infantil", $genre[0])  ? 'checked' : ''  ?>/> <?= __('Infantil') ?></label>
+                <label><input type="checkbox" name="review_genre[]" value="belico" <?= in_array("belico", $genre[0]) ? 'checked' : ''  ?> /> <?= __('Belico') ?></label>
+                <label><input type="checkbox" name="review_genre[]" value="comedia"  <?= in_array("comedia", $genre[0]) ? 'checked' : ''  ?>/> <?= __('Comedia') ?></label>
+                <label><input type="checkbox" name="review_genre[]" value="romance"  <?= in_array("romance", $genre[0]) ? 'checked' : ''  ?>/> <?= __('Romance') ?></label>
+                <label><input type="checkbox" name="review_genre[]" value="intriga" <?= in_array("intriga", $genre[0])  ? 'checked' : ''  ?>/> <?= __('Intriga') ?></label>
+                <label><input type="checkbox" name="review_genre[]" value="musical"  <?= in_array("musical", $genre[0])  ? 'checked' : ''  ?>/> <?= __('Musical') ?></label>
+                <label><input type="checkbox" name="review_genre[]" value="serie"  <?= in_array("serie", $genre[0])  ? 'checked' : ''  ?>/> <?= __('Serie') ?></label>
+                <label><input type="checkbox" name="review_genre[]" value="weterm"  <?= in_array("weterm", $genre[0])  ? 'checked' : ''  ?>/> <?= __('Weterm') ?></label>
+                <label><input type="checkbox" name="review_genre[]" value="thriller"  <?= in_array("thriller", $genre[0])  ? 'checked' : ''  ?>/> <?= __('Thriller') ?></label>
             </div>
         </fieldset>
         <fieldset>
             <div class='form-group'>
-                <label for='review_rating'><?= __('Valoracion') ?></label>
-                <input type="range" min="0" max="5" step="0.5" list="steplist" value='<?= $rating === '' ? 0 : $rating ?>' name='review_rating'>
-                <datalist id="steplist">
-                    <option>0</option>
-                    <option>0.5</option>
-                    <option>1</option>
-                    <option>1.5</option>
-                    <option>2</option>
-                    <option>2.5</option>
-                    <option>3</option>
-                    <option>3.5</option>
-                    <option>4</option>
-                    <option>4.5</option>
-                    <option>5</option>
-                </datalist>
+                <label class='title' for='review_storyline'><?= __('Sinopsis') ?></label>
+                <textarea type="text" name="review_storyline" value="<?= $storyline ?>" rows='8'/><?= $storyline ?></textarea>
             </div>
         </fieldset>
+        <label class='title' for='review_rating'><?= __('Valoracion') ?></label>
+        <div class="stars">
+               <input class="star star-5" id="star-5" type="radio" name="review_rating" <?= $rating == 5 ? 'checked' : '' ?> value='5'/>
+               <label class="star star-5" for="star-5"></label>
+               <input class="star star-4" id="star-4" type="radio" name="review_rating" <?= $rating == 4 ? 'checked' : '' ?> value='4'/>
+               <label class="star star-4" for="star-4"></label>
+               <input class="star star-3" id="star-3" type="radio" name="review_rating" <?= $rating == 3 ? 'checked' : '' ?> value='3'/>
+               <label class="star star-3" for="star-3"></label>
+               <input class="star star-2" id="star-2" type="radio" name="review_rating" <?= $rating == 2 ? 'checked' : '' ?> value='2'/>
+               <label class="star star-2" for="star-2"></label>
+               <input class="star star-1" id="star-1" type="radio" name="review_rating" <?= $rating == 1 ? 'checked' : '' ?> value='1'/>
+               <label class="star star-1" for="star-1"></label>
+        </div>
     </div>
 <?php
     
 }
 
+/**
+ * Función Callback para salvar los datos recogidos en el formulario de entrada
+ * La función se tiene que llamar lo mismo que el callback que le pusimos en el wp_once_field
+ */
+ function save_metabox($post_id) {
+     //Comprobamos el campo nonce para la comprobación de seguridad
+     if (!isset($_POST['filmoteca_nonce']) || !wp_verify_nonce($_POST['filmoteca_nonce'], 'save_metabox')) {
+         return;
+     }
+     
+     //Comprobamos si el usuario tiene permisos para guardar o editar
+     if (!current_user_can('edit_page', $post_id) || !current_user_can('edit_post', $post_id)) {
+         return;
+     }
+     
+    //Recogemos los campos y los saneamos para posteriormente guardarlos en nuestra base de datos
+    $original = sanitize_text_field($_POST['review_original_title']);
+    $year = sanitize_text_field($_POST['review_year']);
+    $director = sanitize_text_field($_POST['review_director']);
+    $data = $_POST['review_casting'];
+    $casting = [];
+    foreach($data as $item) {
+        $casting[] = sanitize_text_field($item);
+    }
+    
+    $data2 = $_POST['review_genre'];
+    $genre = [];
+    foreach($data2 as $item) {
+        $genre[] = sanitize_text_field($item);;
+    }
+    
+    $runtime = sanitize_text_field($_POST['review_runtime']);
+    $storyline = sanitize_text_field($_POST['review_storyline']);
+    $rating = sanitize_text_field($_POST['review_rating']);
+    
+    //Actualizamos la base de datos
+    update_post_meta($post_id, 'review_original_title', $original);
+    update_post_meta($post_id, 'review_year', $year);
+    update_post_meta($post_id, 'review_director', $director);
+    update_post_meta($post_id, 'review_runtime', $runtime);
+    update_post_meta($post_id, 'review_storyline', $storyline);
+    update_post_meta($post_id, 'review_rating', $rating);
+    update_post_meta($post_id, 'review_casting', $casting);
+    update_post_meta($post_id, 'review_genre', $genre);
+ }
+
 
 add_action('init', 'reg_post_type_review');
 add_action('init', 'add_cat_panels');
 add_action('add_meta_boxes', 'add_filmoteca_review_metabox');
+add_action('save_post', 'save_metabox');
 
  
  
