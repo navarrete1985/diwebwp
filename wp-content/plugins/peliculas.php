@@ -104,6 +104,7 @@ function filmoteca_review_meta_box_callback($post) {
     $runtime = get_post_meta($post->ID, 'review_runtime', true);
     $storyline = get_post_meta($post->ID, 'review_storyline', true);
     $rating = get_post_meta($post->ID, 'review_rating', true);
+    $producer = get_post_meta($post->ID, 'revier_producer', true);
     ?>
     
     <!--Pintamos nuestro formulario en el backend-->
@@ -118,6 +119,12 @@ function filmoteca_review_meta_box_callback($post) {
             <div class='form-group'>
                 <label class='title' for='review_year'><?= __('Año de producción') ?></label>
                 <input type="number" name="review_year" value="<?= $year ?>"/>
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class='form-group'>
+                <label class='title' for='review_producer'><?= __('Productora') ?></label>
+                <input type="text" name="review_producer" value="<?= $pruducer ?>"/>
             </div>
         </fieldset>
         <fieldset>
@@ -215,6 +222,7 @@ function filmoteca_review_meta_box_callback($post) {
     $original = sanitize_text_field($_POST['review_original_title']);
     $year = sanitize_text_field($_POST['review_year']);
     $director = sanitize_text_field($_POST['review_director']);
+    $producer = sanitize_text_field($_POST['review_producer']);
     $data = $_POST['review_casting'];
     $casting = [];
     foreach($data as $item) {
@@ -240,6 +248,7 @@ function filmoteca_review_meta_box_callback($post) {
     update_post_meta($post_id, 'review_rating', $rating);
     update_post_meta($post_id, 'review_casting', $casting);
     update_post_meta($post_id, 'review_genre', $genre);
+    update_post_meta($post_id, 'review_producer', $producer);
  }
 
 

@@ -13,6 +13,10 @@
 @import url(css/style.css);
 /* :: 3.0 Base CSS */
 
+.pt-100 {
+    padding-top: 100px !important;
+}
+
 .img {
     width: 100%;
     margin-bottom: -3px;
@@ -24,6 +28,10 @@
 
 .img.pb-70::before {
     padding-bottom: 70%;
+}
+
+.img.pb-50::before {
+    padding-bottom: 50%;
 }
 
 .img::before {
