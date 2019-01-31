@@ -13,6 +13,7 @@
 
     <!-- Favicon -->
     <link rel="icon" href="<?php echo get_template_directory_uri(); ?>/img/core-img/favicon.ico">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
     <!-- Stylesheet -->
     <!--<link rel="stylesheet" href="wp-content/themes/filmoteca/style.css">-->

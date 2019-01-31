@@ -276,12 +276,8 @@
                         <h2>OTROS AUTORES</h2>
                     </div>
                     <?php
-                        $users = get_users();
+                        $users = get_users(); //Recogemos todos los usuarios y los pintamos en nuestra tabla
                         foreach ($users as $user):
-                        //   echo $user->ID;
-                        //   echo $user->display_name;
-                        //   the_author_image($user->ID);
-                        //   echo $user->description;
                     ?>
                     <div class='single-top-item d-flex wow fadeInUp'>
                             <div class='circle-image thumbnail'><?= get_avatar($user->ID, 200); ?></div>
@@ -299,12 +295,16 @@
                         <p>enlaces</p>
                         <h2>PÁGINAS</h2>
                     </div>
-                    <div class='single-top-item d-flex wow fadeInUp'>
-                        <div class='thumbnail'></div>
-                        <div class='content'>
-                            <h6>Esto es el título de un post</h6>
-                            <p>Autor</p>
-                        </div>
+                    <div id='container-last-entries' class='remove-li-style'>
+                        <?php
+                            $args = array(
+                                'type'            => 'postbypost',
+                                'limit'           => '7',
+                                'before'          => '<i class="far fa-bookmark"></i>',
+                                'after'           => '<hr>',
+                            );
+                            wp_get_archives( $args );
+                        ?>
                     </div>
                 </div>
             </div>

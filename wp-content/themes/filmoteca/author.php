@@ -138,96 +138,22 @@
                             <div class="col-12 col-xl-10 text-center">
                                 <h1 class="mb-70">Últimos Posts</h1>
                                 <!-- Single Post Start -->
-                                <div class="single-blog-post mb-100 wow fadeInUp" data-wow-delay="100ms">
-                                    <!-- Post Thumb -->
-                                    <div class="blog-post-thumb mt-30">
-                                        <a href="#"><img src="<?= get_template_directory_uri() ?>/img/bg-img/blog1.jpg" alt=""></a>
-                                        <!-- Post Date -->
-                                        <div class="post-date">
-                                            <span>15</span>
-                                            <span>June ‘18</span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Blog Content -->
-                                    <div class="blog-content">
-                                        <!-- Post Title -->
-                                        <a href="#" class="post-title">5 Festivals you shouldn’t miss this summer</a>
-                                        <!-- Post Meta -->
-                                        <div class="post-meta d-flex mb-30">
-                                            <p class="post-author">By<a href="#"> Admin</a></p>
-                                            <p class="tags">in<a href="#"> Events</a></p>
-                                            <p class="tags"><a href="#">2 Comments</a></p>
-                                        </div>
-                                        <!-- Post Excerpt -->
-                                        <p>Pellentesque sit amet velit a libero viverra porta non eu justo. Vivamus mollis metus sem, ac sodales dui lobortis. Pellentesque sit amet velit a libero viverra porta non eu justo. Vivamus mollis metus sem, ac sodales dui lobortis.</p>
-                                    </div>
-                                </div>
-
-                                <!-- Single Post Start -->
-                                <div class="single-blog-post mb-100 wow fadeInUp" data-wow-delay="100ms">
-                                    <!-- Post Thumb -->
-                                    <div class="blog-post-thumb mt-30">
-                                        <a href="#"><img src="<?= get_template_directory_uri() ?>/img/bg-img/blog2.jpg" alt=""></a>
-                                        <!-- Post Date -->
-                                        <div class="post-date">
-                                            <span>15</span>
-                                            <span>June ‘18</span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Blog Content -->
-                                    <div class="blog-content">
-                                        <!-- Post Title -->
-                                        <a href="#" class="post-title">5 Festivals you shouldn’t miss this summer</a>
-                                        <!-- Post Meta -->
-                                        <div class="post-meta d-flex mb-30">
-                                            <p class="post-author">By<a href="#"> Admin</a></p>
-                                            <p class="tags">in<a href="#"> Events</a></p>
-                                            <p class="tags"><a href="#">2 Comments</a></p>
-                                        </div>
-                                        <!-- Post Excerpt -->
-                                        <p>Pellentesque sit amet velit a libero viverra porta non eu justo. Vivamus mollis metus sem, ac sodales dui lobortis. Pellentesque sit amet velit a libero viverra porta non eu justo. Vivamus mollis metus sem, ac sodales dui lobortis.</p>
-                                    </div>
-                                </div>
-
-                                <!-- Single Post Start -->
-                                <div class="single-blog-post mb-100 wow fadeInUp" data-wow-delay="100ms">
-                                    <!-- Post Thumb -->
-                                    <div class="blog-post-thumb mt-30">
-                                        <a href="#"><img src="<?= get_template_directory_uri() ?>/img/bg-img/blog3.jpg" alt=""></a>
-                                        <!-- Post Date -->
-                                        <div class="post-date">
-                                            <span>15</span>
-                                            <span>June ‘18</span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Blog Content -->
-                                    <div class="blog-content">
-                                        <!-- Post Title -->
-                                        <a href="#" class="post-title">5 Festivals you shouldn’t miss this summer</a>
-                                        <!-- Post Meta -->
-                                        <div class="post-meta d-flex mb-30">
-                                            <p class="post-author">By<a href="#"> Admin</a></p>
-                                            <p class="tags">in<a href="#"> Events</a></p>
-                                            <p class="tags"><a href="#">2 Comments</a></p>
-                                        </div>
-                                        <!-- Post Excerpt -->
-                                        <p>Pellentesque sit amet velit a libero viverra porta non eu justo. Vivamus mollis metus sem, ac sodales dui lobortis. Pellentesque sit amet velit a libero viverra porta non eu justo. Vivamus mollis metus sem, ac sodales dui lobortis.</p>
-                                    </div>
-                                </div>
-
-                                <!-- Pagination -->
-                                <div class="oneMusic-pagination-area wow fadeInUp" data-wow-delay="300ms">
-                                    <nav>
-                                        <ul class="pagination">
-                                            <li class="page-item active"><a class="page-link" href="#">01</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">02</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">03</a></li>
-                                        </ul>
-                                    </nav>
-                                </div>
+                                <?php 
+                            
+                                    $lastest_posts = get_posts(array(
+                                        'post_type'  => ['post'],
+                                        'author'     => $curauth->ID,
+                                        'orderby'    => 'date',
+                                        'numberposts'=> 5
+                                    ));
+                                    
+                                    foreach($lastest_posts as $post){ 
+                                        the_post();
+                                        if (get_post_type($post) == 'post') {
+                                            get_template_part('templates/post', 'author');    
+                                        }
+                                    }
+                                ?>
                             </div>
                         </div>
                     </div>

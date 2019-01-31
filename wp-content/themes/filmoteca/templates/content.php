@@ -3,7 +3,7 @@
     <!-- Post Thumb -->
     <div class="blog-post-thumb mt-30">
         <!--<a href="#"><img src="img/bg-img/blog1.jpg" alt=""></a>-->
-        <?php the_post_thumbnail(); ?>
+        <div class="img bg-img pb-70 bg-position-top" style="background-image: url(<?= the_post_thumbnail_url() ?>);"></div>
         <!-- Post Date -->
         <div class="post-date">
             <span><?php echo get_the_date('d'); ?></span>

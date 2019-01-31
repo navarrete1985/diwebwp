@@ -7,14 +7,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-	<title>404 HTML Template by Colorlib</title>
+	<title>404 Page not found</title>
 
 	<!-- Google font -->
 	<link href="https://fonts.googleapis.com/css?family=Muli:400" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Passion+One" rel="stylesheet">
 
 	<!-- Font Awesome Icon -->
-	<link type="text/css" rel="stylesheet" href="<?= get_template_directory_uri(); ?>/css/404/font-awesome.min.css" />
+	<link type="text/css" rel="stylesheet" href="<?= get_template_directory_uri(); ?>/css/font-awesome.min.css" />
 
 	<!-- Custom stlylesheet -->
 	<link type="text/css" rel="stylesheet" href="<?= get_template_directory_uri(); ?>/css/404/style.css" />
@@ -42,7 +42,7 @@
 				<!--<button type="button">Search</button>-->
 				<?php get_search_form() ?>
 			</div>
-			<a href="<?= get_home_url() ?>">Back To Homepage</a>
+			<a href="<?= get_home_url() ?>"><?= __("VOLVER A INICIO") ?></a></a>
 		</div>
 	</div>
 
