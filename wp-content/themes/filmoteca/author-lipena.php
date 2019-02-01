@@ -295,7 +295,7 @@
                         <p>enlaces</p>
                         <h2>PÁGINAS</h2>
                     </div>
-                    <div id='container-last-entries' class='remove-li-style'>
+                    <div class='remove-li-style container-list-ico'>
                         <?php
                             $args = array(
                                 'type'            => 'postbypost',

@@ -25,11 +25,13 @@
         <div class="widget-title">
             <h5>Last Entries</h5>
         </div>
-        <div class="widget-content">
+        <div class="widget-content remove-li-style container-list-ico">
             <?php 
                 $args = array (
-                    'type' => 'postbypost',
+                    'type'  => 'postbypost',
                     'limit' => 5,
+                    'before'=> '<i class="far fa-bookmark"></i>',
+                    'after' => '<hr>',
                 );
                 wp_get_archives( $args );
             ?>
@@ -40,9 +42,29 @@
         <div class="widget-title">
             <h5>Authors</h5>
         </div>
-        <div class="widget-content">
+        <div class="widget-content remove-li-style">
             <?php 
-                wp_list_authors('hide_empty=0');
+                // wp_list_authors([
+                //     'hide_empty' => 0,
+                //     'optioncount'=> 1
+                // ]);
+                $args = array (
+                    'orderby'       => 'post_count', 
+                    'order'         => 'ASC', 
+                    'number'        => null,
+                    'optioncount'   => true, 
+                    'hide_empty'     => false,
+                    'echo' => false,
+                );
+                $authors = wp_list_authors( $args ); 
+                $authors = preg_replace('/<\/a> \(([0-9]+)\)/', '<span class="heavyblue pull-right">\\1</span></a>', $authors);
+                // $authors = explode('<li>', $authors);
+                // $resutl = '';
+                // foreach($authors as $author) {
+                //     $result .= '<i class="fas fa-user-tie"></i>' . $author;
+                // }
+                
+                echo $authors;
             ?>
         </div>
     </div>
