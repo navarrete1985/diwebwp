@@ -63,7 +63,6 @@
                 // foreach($authors as $author) {
                 //     $result .= '<i class="fas fa-user-tie"></i>' . $author;
                 // }
-                
                 echo $authors;
             ?>
         </div>
@@ -90,7 +89,5 @@
             ?>
         </div>
     </div>
-    
 </div>
-
 <!--https://ide.c9.io/neomode/wordpress2108-->

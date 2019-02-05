@@ -38,26 +38,36 @@ Template Name: Archivos
         </div>
     </section>
     <!---->
-    <section class='content content-masonry'>
+    <section class='content-masonry'>
         <?php
-        
             // Últimas entradas
             $title = 'Últimas entradas';
             $args = array (
                 'type'            => 'postbypost',
                 'show_post_count' => 1,
                 'post_type'       => 'post',
-                'after'           => '<hr class="hrsoft">',
+                'before'          => '<i class="far fa-bookmark"></i>',
+                'after'           => '<hr class="hrsoft hr-display">',
                 'echo'            => false
             );
             $content =  wp_get_archives( $args );
             include(locate_template('templates/content-archives.php', false, false));
             
             // Categorías
+            // $title = 'Categorías';
+            // $content = wp_list_categories('title_li=&show_count=1&echo=0');
+            // $content = preg_replace('/<\/a> \(([0-9]+)\)/', ' <span class="heavyblue pull-right">\\1</span></a>', $content);
+            // include(locate_template('templates/content-archives.php', false, false));
+            
             $title = 'Categorías';
-            $content = wp_list_categories('title_li=&show_count=1&echo=0');
-            $content = preg_replace('/<\/a> \(([0-9]+)\)/', ' <span class="heavyblue pull-right">\\1</span></a>', $content);
+            $content = '<ul>';
+            $categories = get_categories();
+            foreach($categories as $category) {
+                $content .= '<li><i class="fas fa-certificate"></i><a href="' . get_category_link( $category->term_id ) . '" title="' . sprintf( __( "View all posts in %s" ), $category->name ) . '" ' . '>' . $category->name .'<span class="heavyblue pull-right">' . $category->category_count . '</span></a></li>';
+            }
+            $content .= '</ul>';
             include(locate_template('templates/content-archives.php', false, false));
+            $content = '';
             
             // Tags
             $title = 'Tags';
@@ -65,7 +75,7 @@ Template Name: Archivos
             if ($tags) {
                 $content = '<ul class="tags">';
                 foreach ($tags as $tag) {
-                    $content .= '<li><a href="' . get_tag_link($tag->term_id) . '" title="' . sprintf("Ver todos los post de %s", $tag->name) . '" ' . '>' . $tag->name.'</a></li>';
+                    $content .= '<li><i class="fas fa-tag"></i><a href="' . get_tag_link($tag->term_id) . '" title="' . sprintf("Ver todos los post de %s", $tag->name) . '" ' . '>' . $tag->name . '<span class="heavyblue pull-right">' . $tag->count . '</span></a></li>';
                 }
                 $content .= '</ul>';
             }
@@ -79,11 +89,19 @@ Template Name: Archivos
                 'number'        => null,
                 'optioncount'   => true,
                 'hide_empty'    => false,
-                'echo'          => false
+                'echo'          => false,
+                'style'         => '<i class="fas fa-user-tie"></i>'
             ];
             
             $content = wp_list_authors($args);
-            $content = preg_replace('/<\/a> \(([0-9]+)\)/', ' <span class="heavyblue pull-right">\\1</span></a>', $content);
+            // $content = preg_replace('/<\/a> \(([0-9]+)\)/', ' <span class="heavyblue pull-right">\\1</span></a>', $content);
+            $authors = explode(",", $content);
+            $content = '<ul>';
+            foreach($authors as $author) {
+                $count = preg_replace('/<\/a> \(([0-9]+)\)/', ' <span class="heavyblue pull-right">\\1</span></a>', $author);
+                $content .= '<li><i class="fas fa-user-tie"></i>' . $count . '</li>'; 
+            }
+            $content .= '</ul>';
             include(locate_template('templates/content-archives.php', false, false));
             
             // Post de cada autor
@@ -98,7 +116,7 @@ Template Name: Archivos
                 $args['author'] = $author->ID;
                 $content = '';
                 foreach (get_posts($args) as $post) {
-                    $content .= '<li><a href="'.get_permalink($post->ID).'"> '.$post->post_title.'</a></li><hr class="hrsoft">';
+                    $content .= '<li><i class="fas fa-bookmark"></i><a href="'.get_permalink($post->ID).'"> '.$post->post_title.'</a></li><hr class="hrsoft">';
                 }
                 include(locate_template('templates/content-archives.php', false, false));
             }
@@ -108,7 +126,8 @@ Template Name: Archivos
             $args = [
                 'type'            => 'daily',
                 'show_post_count' => 1,
-                'echo'            => false
+                'echo'            => false,
+                'before'          => '<i class="fas fa-calendar-day"></i>'
             ];
             $content = wp_get_archives($args);
             $content = preg_replace( '~(&nbsp;)(\(\d++\))~', '$1<span class="heavyblue pull-right">$2</span>', $content );
@@ -136,16 +155,16 @@ Template Name: Archivos
             $content = '';
             $args = [
                 'post_per_page' => null,
-                'meta_key'      => 'post_view_count',
+                'meta_key'      => 'numvisit',
                 'orderby'       => 'meta_value_num',
                 'order'         => 'DESC'
             ];
             $posts = new WP_Query($args);
-            while($posts->have_posts()) {
-                $posts->the_post();
-                $views = absint(preg_replace('/[a-zA-Z]/','', getPostViews( $post->ID ) ) );
-                $content .= '<i class="fa fa-chevron-circle-right mygrey"></i>&nbsp;&nbsp;&nbsp;<a href="'.get_the_permalink($post->ID).'">'. $post->post_title.' (<span class="heavyblue pull-right"><i class="fa fa-eye mygrey"></i>&nbsp;&nbsp;'.$views.'</span>)</a><br />';
-            }
+            $content = '';
+            while ( $posts->have_posts() ) : $posts->the_post();
+                   $views = absint(preg_replace('/[a-zA-Z]/','', get_num_visits( $post->ID ) ) );
+                   $content .= '<i class="fa fa-bookmark"></i>&nbsp;&nbsp;&nbsp;<a href="'.get_the_permalink($post->ID).'">'. $post->post_title.' (<span class="heavyblue pull-right"><i class="far fa-eye"></i>&nbsp;&nbsp;'.$views.'</span>)</a><br/><hr>';
+            endwhile;
             wp_reset_query();
             include(locate_template('templates/content-archives.php'));
             
