@@ -1,5 +1,5 @@
 <!-- Single Album Area -->
-<div class="col-12 col-sm-6 col-md-4 col-lg-2">
+<div class="col-12 col-md-6 col-lg-4">
     <div class="single-album-area wow fadeInUp" data-wow-delay="100ms">
         <div class="album-thumb">
             <img src="<?php echo get_template_directory_uri(); ?>/img/bg-img/b1.jpg" alt="">

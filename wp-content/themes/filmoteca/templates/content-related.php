@@ -4,12 +4,15 @@
 </div>
 <div class='row'>
     <?php
+        
         $id = $post->ID;
+        
         $category = get_the_category($id);
+        
         $args = array(
             'posts_per_page' => 3,
             'orderby'        => 'date',
-            'category__in'    => $category,
+            'category__in'    => $category,//Admite un array de id de categorias, por lo que me falla al pasarle un array de categorias....recorrer con un fo y meter id de cada una de las categorias
             'post__not_in'  => array($id_destacado)
         );
         $custom_query = new WP_Query($args);
