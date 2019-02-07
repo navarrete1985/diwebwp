@@ -136,4 +136,16 @@ function salute_func($atts, $content = 'asdasd') {
 }
 add_shortcode('salute', 'salute_func');
 
+/**
+ * Función que nos va a convertir un array de valores en un string separado por comas.
+ */
+function getListString($post_id, $post_meta_key) {
+    $result = '';
+    $items = get_post_meta($post_id, $post_meta_key, false);
+    foreach($items[0] as $item) {
+        $result .= ucwords($item) . ', ';
+    }
+    return strlen($result) > 0 ? substr($result, 0, strlen($result) - 2) : $result;
+}
+
 ?>

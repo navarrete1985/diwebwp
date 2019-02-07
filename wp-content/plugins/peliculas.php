@@ -104,7 +104,7 @@ function filmoteca_review_meta_box_callback($post) {
     $runtime = get_post_meta($post->ID, 'review_runtime', true);
     $storyline = get_post_meta($post->ID, 'review_storyline', true);
     $rating = get_post_meta($post->ID, 'review_rating', true);
-    $producer = get_post_meta($post->ID, 'revier_producer', true);
+    $producer = get_post_meta($post->ID, 'review_producer', true);
     ?>
     
     <!--Pintamos nuestro formulario en el backend-->
@@ -124,7 +124,7 @@ function filmoteca_review_meta_box_callback($post) {
         <fieldset>
             <div class='form-group'>
                 <label class='title' for='review_producer'><?= __('Productora') ?></label>
-                <input type="text" name="review_producer" value="<?= $pruducer ?>"/>
+                <input type="text" name="review_producer" value="<?= $producer ?>"/>
             </div>
         </fieldset>
         <fieldset>
@@ -140,13 +140,17 @@ function filmoteca_review_meta_box_callback($post) {
                 <div class='btn-add-actor dashicons-before dashicons-plus-alt'></div>
                 <div class='content-casting'>
                     <!--Los valores almacenados como array que saneamos los tenemos que recoger como si fuese un array dentro de otro-->
-                    <?php foreach($casting[0] as $actor){ ?>
-                        <span class='item'>
-                            <input type="hidden" name="review_casting[]" value="<?= $actor ?>"/>
-                            <span class='name-author actor'><?= $actor ?></span>
-                            <span type='button' class='delete-actor dashicons-before dashicons-no-alt'></span>
-                        </span>
-                    <?php } ?> 
+                    <?php
+                    if (sizeof($casting) > 0) {
+                        foreach($casting[0] as $actor){ ?>   
+                            <span class='item'>
+                                <input type="hidden" name="review_casting[]" value="<?= $actor ?>"/>
+                                <span class='name-author actor'><?= $actor ?></span>
+                                <span type='button' class='delete-actor dashicons-before dashicons-no-alt'></span>
+                            </span>
+                    <?php 
+                        }
+                    }?> 
                 </div>
             </div>
         </fieldset>

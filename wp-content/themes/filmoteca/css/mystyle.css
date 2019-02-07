@@ -292,7 +292,7 @@ height:0;
 overflow:hidden;
 }
 
-.wp-block-embed__wrapper iframe, .wp-block-embed__wrapper object, .wp-block-embed__wrapper embed {
+.wp-block-embed__wrapper iframe, .wp-block-embed__wrapper object, .wp-block-embed__wrapper embed, .custom-post-content iframe {
 position:absolute;
 top:0;
 left:0;
@@ -428,3 +428,99 @@ height:100%;
     }
 }
 
+/*-----------------------Estrellas para el custom post--------------------------------*/
+.custom-post-stars {
+    width: 104px !important;
+    display: inline-block;
+    background-color: rgb(87,96,102, 0.8);
+    border-radius: 50px;
+    padding-left: 4px;
+    padding-right: 4px;
+    z-index: 2;
+    position: absolute;
+    top: 16px;
+    left: 16px;
+}
+
+input.cp-star { 
+    display: none; 
+}
+
+label.cp-star {
+  float: right;
+  padding: 3px !important;
+  font-size: 14px !important;
+  color: #444;
+  transition: all .2s;
+  margin-top: 3px !important;
+  margin-bottom: 3px !important;
+}
+
+input.cp-star:checked ~ label.cp-star:before {
+  content: '\f005';
+  color: #FD4;
+  transition: all .25s;
+}
+input.star-5:checked ~ label.cp-star:before {
+  color: #FE7;
+  text-shadow: 0 0 20px #952;
+}
+
+input.star-1:checked ~ label.cp-star:before { 
+    color: #F62;    
+}
+
+label.cp-star:hover { 
+    transform: rotate(-15deg) scale(1.3); 
+}
+
+label.cp-star:before {
+    content: '\f006';
+    font-family: FontAwesome;
+}
+
+.custom-post-stars::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    background-color: transparent;
+}
+
+.container-description {
+    border: 1px solid #d8d8d8;
+    background-color: #f5f9fa;
+}
+
+.item-list > li {
+    margin-bottom: 4px;
+}
+
+.item {
+    font-size: 1.1em;
+    margin-left: 4px;
+    font-weight: bold;
+}
+
+.container-stars {
+    position: relative;
+    width: auto !important;
+}
+
+.container-stars::before {
+    content: '';
+    position: absolute;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+}
+
+.aligncenter {
+    margin: 0 auto;
+}

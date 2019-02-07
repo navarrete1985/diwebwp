@@ -1,4 +1,3 @@
-<hr>
 <div class='row justify-content-center'>
     <h1 class='text-center'>POST RELACIONADOS</h1>
 </div>

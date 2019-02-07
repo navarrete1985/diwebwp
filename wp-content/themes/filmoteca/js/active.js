@@ -273,4 +273,8 @@
         'iten-selector': 'masonry-item'
     });
     masonry.masonry();
+    
+    //Video responsive en custom post
+    $('.custom-post-content iframe').parent().addClass('wp-block-embed__wrapper');
+    $('.custom-post-content img.aligncenter').parent('p').addClass('text-center');
 })(jQuery);

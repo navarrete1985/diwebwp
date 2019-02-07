@@ -73,8 +73,8 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <div class="section-heading style-2">
-                        <p>See what’s new</p>
+                    <div class="section-heading style-2 mb-50">
+                        <p>Últimas entradas</p>
                         <!--<h2>Latest Albums</h2>-->
                         <h2><?php the_title() ?></h2>
                     </div>
@@ -83,7 +83,7 @@
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-9">
                     <div class="ablums-text text-center mb-70">
-                        <p>Nam tristique ex vel magna tincidunt, ut porta nisl finibus. Vivamus eu dolor eu quam varius rutrum. Fusce nec justo id sem aliquam fringilla nec non lacus. Suspendisse eget lobortis nisi, ac cursus odio. Vivamus nibh velit, rutrum at ipsum ac, dignissim iaculis ante. Donec in velit non elit pulvinar pellentesque et non eros.</p>
+                        <p>Queremos que estés informado y a la última de todo lo relacionado con el mundo del cine, desde reviwes sobre las últimas peliculas en cartelera, pasando por puntos de vista personal sobre las tendencias en el mundo del cine hasta los sucedido en los últimos certamenes del séptimo arte.</p>
                     </div>
                 </div>
             </div>
@@ -331,9 +331,16 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <div class="section-heading style-2">
+                    <div class="section-heading style-2 mb-50">
                         <p>Últimas Reviwes</p>
-                        <h2>Críticas</h2>00
+                        <h2>Críticas</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-9">
+                    <div class="ablums-text text-center mb-70">
+                        <p>Conone nuestra opinión sobre las últimas películas que están en cartelera, queremos ofrecerte nuestra opinión sobre películas para que después compartas tu punto de vista con nosotros, esto no es una sección especializada en la que nuestra opinión es la más válida, sino que queremos que los usuarios compartan sus puntos de vista con nosotros para poder debatir y ver el mundo del cine desde otro prisma.</p>
                     </div>
                 </div>
             </div>
@@ -342,7 +349,7 @@
                     <?php
                         $args = [
                             'post_type'     => ['filmoteca_review'],
-                            'post_per_page' => '8'
+                            'posts_per_page' => 6
                         ];
                         
                         $custom_posts = new Wp_Query($args);
