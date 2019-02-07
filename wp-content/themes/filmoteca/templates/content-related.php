@@ -7,7 +7,11 @@
         
         $id = $post->ID;
         
-        $category = get_the_category($id);
+        $categories = get_the_category($id);
+        $category = [];
+        foreach($categories as $item) {
+            $category[] = $item->term_id;
+        }
         
         $args = array(
             'posts_per_page' => 3,

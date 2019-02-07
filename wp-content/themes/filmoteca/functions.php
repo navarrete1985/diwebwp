@@ -54,7 +54,8 @@ function generaltheme_widgets_init() {
 
 function get_author_role($author_id) {
     $user_info = get_userdata( $author_id );
-    return implode(', ', $user_info->roles);    
+    $rol = implode(', ', $user_info->roles);
+    return $rol;
 }
 
 /* Listado de tags para la plantilla archives */

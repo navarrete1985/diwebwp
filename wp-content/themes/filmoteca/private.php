@@ -12,21 +12,25 @@ if (!is_user_logged_in()) {
 <?php
 }
     $user = wp_get_current_user();
-    $rol  = get_author_role($user->ID);
-    echo $rol;
-    
-    switch($rol) {
-        case 'administrator':
-            //Lo suyo es tener un template para cada uno de los roles, y pintar dependiendo de cada uno de ellos
-            break;
-        case 'editor':
-            break;
-        case 'author':
-            break;
-        case 'subcriber':
-            break;
-        case 'contributor':
-            break;
+    if ($user->ID > 0) {
+        $rol  = get_author_role($user->ID);
+        echo $rol;    
+        switch($rol) {
+            case 'administrator':
+                //Lo suyo es tener un template para cada uno de los roles, y pintar dependiendo de cada uno de ellos
+                break;
+            case 'editor':
+                break;
+            case 'author':
+                break;
+            case 'subcriber':
+                break;
+            case 'contributor':
+                break;
+        }
     }
+    
+    
+    
 ?>
 <h1>Esto es una plantilla personalizada</h1>
