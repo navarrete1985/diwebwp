@@ -148,4 +148,24 @@ function getListString($post_id, $post_meta_key) {
     return strlen($result) > 0 ? substr($result, 0, strlen($result) - 2) : $result;
 }
 
+/*--------------------------------------------------------LOGIN--------------------------------------------------------*/
+function my_login_logo(){
+    echo '<style type="text/css">
+        #login h1 a, .login h1 a {
+            background-image : url("https://i.pinimg.com/originals/80/78/22/8078227d0ce3cfe4f389d88400253f6d.png");
+            height: 245px;
+            width: 320px;
+            background-size: 300px, 300px;
+            background-repeat: no-repeat;
+            margin-top: -100px;
+        }
+    </style>';
+}
+add_action('login_enqueue_scripts', 'my_login_logo');
+
+function my_login_logo_url() {
+    return home_url();
+}
+add_filter('login_headerurl', 'my_login_logo_url');
+
 ?>

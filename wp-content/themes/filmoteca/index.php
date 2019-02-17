@@ -121,7 +121,7 @@
                         //Preguntamos por que página estamos para mostrar puesto que estamos haciendo paginación
                         $paged = get_query_var('paged') > 1 ? get_query_var('paged') : 1;
                         $args = array(
-                            'post_type' => array ('post', 'filmoteca_review'),
+                            'post_type' => array ('post'),
                             'posts_per_page' => 4,
                             'paged'          => $paged,
                             'orderby'        => 'date',
