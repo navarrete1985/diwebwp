@@ -59,8 +59,6 @@
                                     ),
                                     'operator' => 'NOT IN'
                                 ) 
-    
-        
             )
         );
         $post_destacado = new WP_Query($args);

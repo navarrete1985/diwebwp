@@ -50,7 +50,7 @@
             <!-- Single Hero Slide -->
             <div class="single-hero-slide d-flex align-items-center justify-content-center">
                 <!-- Slide Img -->
-                <div class="slide-img bg-img" style="background-image: url(<?php echo get_template_directory_uri(); ?>/img/bg-img/bg-2.jpg);"></div>
+                <div class="slide-img bg-img" style="background-image: url(<?php echo get_template_directory_uri(); ?>/img/other/PulpFiction2.jpg);"></div>
                 <!-- Slide Content -->
                 <div class="container">
                     <div class="row">
@@ -190,10 +190,8 @@
                                                     ),
                                                     'operator' => 'NOT IN'
                                                 ) 
-                    
-                        
-                            )
-                        );
+                                            )
+                                );
                         
                         $custom_query = new WP_Query($args);
                         
@@ -213,6 +211,7 @@
                                     <a href="#" class="event-place"><?= the_author() ?></a>
                                     <a href="#" class="event-date"><?php the_time('j M Y') ?></a>
                                 </div>
+                                <hr>
                                 <p><?= the_excerpt() ?></p>
                                 <a href="<?= the_permalink() ?>" class="btn see-more-btn">Saber más</a>
                             </div>
@@ -359,13 +358,14 @@
                                 get_template_part('templates/content', 'small-custompost');
                             }
                         }
+                        wp_reset_query();
                     ?>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12">
                     <div class="load-more-btn text-center wow fadeInUp" data-wow-delay="300ms">
-                        <a href="#" class="btn oneMusic-btn">Ver Más <i class="fa fa-angle-double-right"></i></a>
+                        <a href="<?= get_page_link(get_page_by_title('Películas')) ?>" class="btn oneMusic-btn">Ver Más <i class="fa fa-angle-double-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -373,113 +373,177 @@
     </section>
     <!-- ##### Buy Now Area End ##### -->
 
-    <!-- SECCIÓN BANDAS SONORAS -->
-    <section class="featured-artist-area section-padding-100 bg-img bg-overlay bg-fixed " style="background-image: url(<?= get_template_directory_uri(); ?>/img/bg-img/bg-4.jpg);">
-        <div class="container">
-            <div class="row align-items-end">
-                <div class="col-12 col-md-5 col-lg-4">
-                    <div class="featured-artist-thumb">
-                        <img src="<?php echo get_template_directory_uri(); ?>/img/bg-img/fa.jpg" alt="">
-                    </div>
-                </div>
-                <div class="col-12 col-md-7 col-lg-8">
-                    <div class="featured-artist-content">
-                        <!-- Section Heading -->
-                        <div class="section-heading white text-left mb-30">
-                            <p>See what’s new</p>
-                            <h2>Buy What’s New</h2>
-                        </div>
-                        <p>Nam tristique ex vel magna tincidunt, ut porta nisl finibus. Vivamus eu dolor eu quam varius rutrum. Fusce nec justo id sem aliquam fringilla nec non lacus. Suspendisse eget lobortis nisi, ac cursus odio. Vivamus nibh velit, rutrum at ipsum ac, dignissim iaculis ante. Donec in velit non elit pulvinar pellentesque et non eros.</p>
-                        <div class="song-play-area">
-                            <div class="song-name">
-                                <p>01. Main Hit Song</p>
-                            </div>
-                            <audio preload="auto" controls>
-                                <source src="<?php echo get_template_directory_uri(); ?>/audio/dummy-audio.mp3">
-                            </audio>
-                        </div>
+    <!-- SECCIÓN BANDA SONORAS -->
+    <?php
+        $args = [
+            'post_format' => 'post-format-audio',
+            'posts_per_page'=> 1,
+            'orderby'       => 'publish_date',
+            'order'         => 'DESC',
+        ];
+        $audioPost = new WP_Query($args);
+        if($audioPost->have_posts()):
+            $audioPost->the_post();
+            $images = get_attached_media('image', $post->ID);
+            $imageUrl = get_the_post_thumbnail_url();
+            if (count($images) > 0) {
+                $count = 0;
+                foreach($images as $image) {
+                    // break;
+                    if ($count === 1) {
+                        $imageUrl =  wp_get_attachment_url($image->ID, 'full');
+                        break;
+                    }
+                    $count++;
+                }
+            }
+            
+            $media = get_attached_media('audio', $post->ID);
+            foreach($media as $item) {
+                $audio = wp_get_attachment_url($item->ID);
+                break;
+            }
+    ?>      
+            <div class="row mt-70">
+                <div class="col-12">
+                    <div class="section-heading style-2 mb-50">
+                        <p>Última Entrada</p>
+                        <h2>Bandas Sonoras</h2>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-9">
+                    <div class="ablums-text text-center mb-70">
+                        <p>Conone las mejores bandas sonoras del mundo del cine, y descubre lo que se esconde detrás de esos acordes de los que jamás nos olvidaremos.<br>Te intentaremos contar los datos más curiosos sobre todo lo que rodea al mundo del cine desde todas las perpesctivas.</p>
+                    </div>
+                </div>
+            </div>
+            <section class="featured-artist-area section-padding-100 bg-img bg-overlay bg-fixed" style="background-image: url(<?= get_the_post_thumbnail_url(); ?>);">
+                <div class="container">
+                    <div class="row align-items-end">
+                        <div class="col-12 col-md-5 col-lg-4">
+                            <div class="featured-artist-thumb">
+                                <img src="<?= $imageUrl ?>" alt="">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-7 col-lg-8">
+                            <div class="featured-artist-content">
+                                <!-- Section Heading -->
+                                <div class="section-heading white text-left mb-30">
+                                    <p><?= get_the_author() ?></p>
+                                    <a href='<?= get_the_permalink() ?>'><h2><?= get_the_title() ?></h2></a>
+                                </div>
+                                <p><?= get_the_excerpt() ?></p>
+                                <div class="song-play-area">
+                                    <div class="song-name">
+                                        <p><?= end(explode('/',$audio)) ?></p>
+                                    </div>
+                                    <audio preload="auto" controls>
+                                        <source src="<?php echo $audio ; ?>">
+                                    </audio>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    <?php 
+        endif;
+        wp_reset_query();
+    ?>
     <!-- ##### Featured Artist Area End ##### -->
 
-    <!-- ##### Miscellaneous Area Start ##### -->
+    <!-- ##### RANKING TAQUILLAS ##### -->
     <section class="miscellaneous-area section-padding-100-0">
+        <div class="row">
+                <div class="col-12">
+                    <div class="section-heading style-2 mb-50">
+                        <p>Taquillas España</p>
+                        <h2>Ranking Taquilla Cines</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-9">
+                    <div class="ablums-text text-center mb-70">
+                        <p>Descubre cómo van las taquillas de nuestro país, con este ranking actualizado podrás descubrir que películas están siendo tendencia en el mundo del cine, la recaudación que están acumulando y cuanto tiempo llevan en cartelera.<br>La lista está actualizada al día por lo que podrás tener una idea de cúales son las mejores películas para que disfrutes del mejor cine.</p>
+                    </div>
+                </div>
+            </div>
         <div class="container">
             <div class="row">
                 <!-- ***** Weeks Top ***** -->
                 <div class="col-12 col-lg-4">
                     <div class="weeks-top-area mb-100">
                         <div class="section-heading text-left mb-50 wow fadeInUp" data-wow-delay="50ms">
-                            <p>See what’s new</p>
-                            <h2>This week’s top</h2>
+                            <p>Ranking taquilla</p>
+                            <h2>Última semana</h2>
                         </div>
 
                         <!-- Single Top Item -->
                         <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="100ms">
                             <div class="thumbnail">
-                                <img src="<?php echo get_template_directory_uri(); ?>/img/bg-img/wt1.jpg" alt="">
+                                <div class="img bg-img pb-100" style="background-image: url('<?php echo get_template_directory_uri(); ?>/img/taquilla/greenbook.jpg');"></div>
                             </div>
                             <div class="content-">
-                                <h6>Sam Smith</h6>
-                                <p>Underground</p>
+                                <h6>Green Book</h6>
+                                <p>Recaudación Acumulada <span class='recaudacion'>2.5M€</span></p>
                             </div>
                         </div>
 
                         <!-- Single Top Item -->
                         <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="150ms">
                             <div class="thumbnail">
-                                <img src="<?php echo get_template_directory_uri(); ?>/img/bg-img/wt2.jpg" alt="">
+                                <div class="img bg-img pb-100" style="background-image: url('<?php echo get_template_directory_uri(); ?>/img/taquilla/mismo-techo.jpg');"></div>
                             </div>
                             <div class="content-">
-                                <h6>Power Play</h6>
-                                <p>In my mind</p>
+                                <h6>Bajo el Mismo Techo</h6>
+                                <p>Recaudación Acumulada <span class='recaudacion'>2.2M€</span></p>
                             </div>
                         </div>
 
                         <!-- Single Top Item -->
                         <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="200ms">
                             <div class="thumbnail">
-                                <img src="<?php echo get_template_directory_uri(); ?>/img/bg-img/wt3.jpg" alt="">
+                                <div class="img bg-img pb-100" style="background-image: url('<?php echo get_template_directory_uri(); ?>/img/taquilla/la-lego-pelicula-2.jpg');"></div>
                             </div>
                             <div class="content-">
-                                <h6>Cristinne Smith</h6>
-                                <p>My Music</p>
+                                <h6>La Lego Película 2</h6>
+                                <p>Recaudación Acumulada <span class='recaudacion'>0.715M€</span></p>
                             </div>
                         </div>
 
                         <!-- Single Top Item -->
                         <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="250ms">
                             <div class="thumbnail">
-                                <img src="<?php echo get_template_directory_uri(); ?>/img/bg-img/wt4.jpg" alt="">
+                                <div class="img bg-img pb-100" style="background-image: url('<?php echo get_template_directory_uri(); ?>/img/taquilla/creed2.jpg');"></div>
                             </div>
                             <div class="content-">
-                                <h6>The Music Band</h6>
-                                <p>Underground</p>
+                                <h6>Creed II, La Leyenda de Rocky</h6>
+                                <p>Recaudación Acumulada <span class='recaudacion'>4.22M€</span></p>
                             </div>
                         </div>
 
                         <!-- Single Top Item -->
                         <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="300ms">
                             <div class="thumbnail">
-                                <img src="<?php echo get_template_directory_uri(); ?>/img/bg-img/wt5.jpg" alt="">
+                                <div class="img bg-img pb-100" style="background-image: url('<?php echo get_template_directory_uri(); ?>/img/taquilla/maria-reina-escocia.jpg');"></div>
                             </div>
                             <div class="content-">
-                                <h6>Creative Lyrics</h6>
-                                <p>Songs and stuff</p>
+                                <h6>María Reina de Escocia</h6>
+                                <p>Recaudación Acumulada <span class='recaudacion'>0.45M€</span></p>
                             </div>
                         </div>
 
                         <!-- Single Top Item -->
                         <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="350ms">
                             <div class="thumbnail">
-                                <img src="<?php echo get_template_directory_uri(); ?>/img/bg-img/wt6.jpg" alt="">
+                                <div class="img bg-img pb-100" style="background-image: url('<?php echo get_template_directory_uri(); ?>/img/taquilla/glass.jpeg');"></div>
                             </div>
                             <div class="content-">
-                                <h6>The Culture</h6>
-                                <p>Pop Songs</p>
+                                <h6>Glass</h6>
+                                <p>Recaudación Acumulada <span class='recaudacion'>4.85M€</span></p>
                             </div>
                         </div>
 
@@ -488,185 +552,151 @@
 
                 <!-- ***** New Hits Songs ***** -->
                 <div class="col-12 col-lg-4">
-                    <div class="new-hits-area mb-100">
+                    <div class="weeks-top-area mb-100">
                         <div class="section-heading text-left mb-50 wow fadeInUp" data-wow-delay="50ms">
-                            <p>See what’s new</p>
-                            <h2>New Hits</h2>
+                            <p>Ranking taquilla</p>
+                            <h2>Estrenos 2019</h2>
                         </div>
 
                         <!-- Single Top Item -->
-                        <div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="100ms">
-                            <div class="first-part d-flex align-items-center">
-                                <div class="thumbnail">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/img/bg-img/wt7.jpg" alt="">
-                                </div>
-                                <div class="content-">
-                                    <h6>Sam Smith</h6>
-                                    <p>Underground</p>
-                                </div>
+                        <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="350ms">
+                            <div class="thumbnail">
+                                <div class="img bg-img pb-100" style="background-image: url('<?php echo get_template_directory_uri(); ?>/img/taquilla/glass.jpeg');"></div>
                             </div>
-                            <audio preload="auto" controls>
-                                <source src="<?php echo get_template_directory_uri(); ?>/audio/dummy-audio.mp3">
-                            </audio>
+                            <div class="content-">
+                                <h6>Glass</h6>
+                                <p>Recaudación Acumulada <span class='recaudacion'>4.85M€</span></p>
+                            </div>
                         </div>
 
                         <!-- Single Top Item -->
-                        <div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="150ms">
-                            <div class="first-part d-flex align-items-center">
-                                <div class="thumbnail">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/img/bg-img/wt8.jpg" alt="">
-                                </div>
-                                <div class="content-">
-                                    <h6>Power Play</h6>
-                                    <p>In my mind</p>
-                                </div>
+                        <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="250ms">
+                            <div class="thumbnail">
+                                <div class="img bg-img pb-100" style="background-image: url('<?php echo get_template_directory_uri(); ?>/img/taquilla/creed2.jpg');"></div>
                             </div>
-                            <audio preload="auto" controls>
-                                <source src="<?php echo get_template_directory_uri(); ?>/audio/dummy-audio.mp3">
-                            </audio>
+                            <div class="content-">
+                                <h6>Creed II, La Leyenda de Rocky</h6>
+                                <p>Recaudación Acumulada <span class='recaudacion'>4.22M€</span></p>
+                            </div>
+                        </div>
+                        
+                        <!-- Single Top Item -->
+                        <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="200ms">
+                            <div class="thumbnail">
+                                <div class="img bg-img pb-100" style="background-image: url('<?php echo get_template_directory_uri(); ?>/img/taquilla/la-favorita.jpg');"></div>
+                            </div>
+                            <div class="content-">
+                                <h6>La Favorita</h6>
+                                <p>Recaudación Acumulada <span class='recaudacion'>2.59M€</span></p>
+                            </div>
+                        </div>
+                        
+                        <!-- Single Top Item -->
+                        <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="100ms">
+                            <div class="thumbnail">
+                                <div class="img bg-img pb-100" style="background-image: url('<?php echo get_template_directory_uri(); ?>/img/taquilla/greenbook.jpg');"></div>
+                            </div>
+                            <div class="content-">
+                                <h6>Green Book</h6>
+                                <p>Recaudación Acumulada <span class='recaudacion'>2.5M€</span></p>
+                            </div>
                         </div>
 
                         <!-- Single Top Item -->
-                        <div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="200ms">
-                            <div class="first-part d-flex align-items-center">
-                                <div class="thumbnail">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/img/bg-img/wt9.jpg" alt="">
-                                </div>
-                                <div class="content-">
-                                    <h6>Cristinne Smith</h6>
-                                    <p>My Music</p>
-                                </div>
+                        <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="150ms">
+                            <div class="thumbnail">
+                                <div class="img bg-img pb-100" style="background-image: url('<?php echo get_template_directory_uri(); ?>/img/taquilla/mismo-techo.jpg');"></div>
                             </div>
-                            <audio preload="auto" controls>
-                                <source src="<?php echo get_template_directory_uri(); ?>/audio/dummy-audio.mp3">
-                            </audio>
+                            <div class="content-">
+                                <h6>Bajo el Mismo Techo</h6>
+                                <p>Recaudación Acumulada <span class='recaudacion'>2.2M€</span></p>
+                            </div>
                         </div>
-
+                        
                         <!-- Single Top Item -->
-                        <div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="250ms">
-                            <div class="first-part d-flex align-items-center">
-                                <div class="thumbnail">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/img/bg-img/wt10.jpg" alt="">
-                                </div>
-                                <div class="content-">
-                                    <h6>The Music Band</h6>
-                                    <p>Underground</p>
-                                </div>
+                        <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="300ms">
+                            <div class="thumbnail">
+                                <div class="img bg-img pb-100" style="background-image: url('<?php echo get_template_directory_uri(); ?>/img/taquilla/asterix-pocion-magica.jpg');"></div>
                             </div>
-                            <audio preload="auto" controls>
-                                <source src="<?php echo get_template_directory_uri(); ?>/audio/dummy-audio.mp3">
-                            </audio>
-                        </div>
-
-                        <!-- Single Top Item -->
-                        <div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="300ms">
-                            <div class="first-part d-flex align-items-center">
-                                <div class="thumbnail">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/img/bg-img/wt11.jpg" alt="">
-                                </div>
-                                <div class="content-">
-                                    <h6>Creative Lyrics</h6>
-                                    <p>Songs and stuff</p>
-                                </div>
+                            <div class="content-">
+                                <h6>Asterix: El Secreto de la Poción Mágica</h6>
+                                <p>Recaudación Acumulada <span class='recaudacion'>1.9M€</span></p>
                             </div>
-                            <audio preload="auto" controls>
-                                <source src="<?php echo get_template_directory_uri(); ?>/audio/dummy-audio.mp3">
-                            </audio>
-                        </div>
-
-                        <!-- Single Top Item -->
-                        <div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="350ms">
-                            <div class="first-part d-flex align-items-center">
-                                <div class="thumbnail">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/img/bg-img/wt12.jpg" alt="">
-                                </div>
-                                <div class="content-">
-                                    <h6>The Culture</h6>
-                                    <p>Pop Songs</p>
-                                </div>
-                            </div>
-                            <audio preload="auto" controls>
-                                <source src="<?php echo get_template_directory_uri(); ?>/audio/dummy-audio.mp3">
-                            </audio>
                         </div>
                     </div>
                 </div>
 
                 <!-- ***** Popular Artists ***** -->
                 <div class="col-12 col-lg-4">
-                    <div class="popular-artists-area mb-100">
+                    <div class="weeks-top-area mb-100">
                         <div class="section-heading text-left mb-50 wow fadeInUp" data-wow-delay="50ms">
-                            <p>See what’s new</p>
-                            <h2>Popular Artist</h2>
+                            <p>Ranking taquilla</p>
+                            <h2>Historia</h2>
                         </div>
 
-                        <!-- Single Artist -->
-                        <div class="single-artists d-flex align-items-center wow fadeInUp" data-wow-delay="100ms">
+                        <!-- Single Top Item -->
+                        <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="100ms">
                             <div class="thumbnail">
-                                <img src="<?php echo get_template_directory_uri(); ?>/img/bg-img/pa1.jpg" alt="">
+                                <div class="img bg-img pb-100" style="background-image: url('<?php echo get_template_directory_uri(); ?>/img/taquilla/Avatar.jpg');"></div>
                             </div>
                             <div class="content-">
-                                <p>Sam Smith</p>
-                            </div>
-                        </div>
-
-                        <!-- Single Artist -->
-                        <div class="single-artists d-flex align-items-center wow fadeInUp" data-wow-delay="150ms">
-                            <div class="thumbnail">
-                                <img src="<?php echo get_template_directory_uri(); ?>/img/bg-img/pa2.jpg" alt="">
-                            </div>
-                            <div class="content-">
-                                <p>William Parker</p>
+                                <h6>Avatar</h6>
+                                <p>2009 Recaudación Acumulada <span class='recaudacion'>77M€</span></p>
                             </div>
                         </div>
 
-                        <!-- Single Artist -->
-                        <div class="single-artists d-flex align-items-center wow fadeInUp" data-wow-delay="200ms">
+                        <!-- Single Top Item -->
+                        <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="150ms">
                             <div class="thumbnail">
-                                <img src="<?php echo get_template_directory_uri(); ?>/img/bg-img/pa3.jpg" alt="">
+                                <div class="img bg-img pb-100" style="background-image: url('<?php echo get_template_directory_uri(); ?>/img/taquilla/8-apellidos-vascos.jpg');"></div>
                             </div>
                             <div class="content-">
-                                <p>Jessica Walsh</p>
+                                <h6>8 Apellidos Vascos</h6>
+                                <p>2014 Recaudación Acumulada <span class='recaudacion'>53.37M€</span></p>
                             </div>
                         </div>
 
-                        <!-- Single Artist -->
-                        <div class="single-artists d-flex align-items-center wow fadeInUp" data-wow-delay="250ms">
+                        <!-- Single Top Item -->
+                        <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="200ms">
                             <div class="thumbnail">
-                                <img src="<?php echo get_template_directory_uri(); ?>/img/bg-img/pa4.jpg" alt="">
+                                <div class="img bg-img pb-100" style="background-image: url('<?php echo get_template_directory_uri(); ?>/img/taquilla/lo-imposible.jpg');"></div>
                             </div>
                             <div class="content-">
-                                <p>Tha Stoves</p>
+                                <h6>Lo Imposible</h6>
+                                <p>2012 Recaudación Acumulada <span class='recaudacion'>42.4M€</span></p>
                             </div>
                         </div>
 
-                        <!-- Single Artist -->
-                        <div class="single-artists d-flex align-items-center wow fadeInUp" data-wow-delay="300ms">
+                        <!-- Single Top Item -->
+                        <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="250ms">
                             <div class="thumbnail">
-                                <img src="<?php echo get_template_directory_uri(); ?>/img/bg-img/pa5.jpg" alt="">
+                                <div class="img bg-img pb-100" style="background-image: url('<?php echo get_template_directory_uri(); ?>/img/taquilla/Titanic.jpg');"></div>
                             </div>
                             <div class="content-">
-                                <p>DJ Ajay</p>
+                                <h6>Titanic</h6>
+                                <p>1998 Recaudación Acumulada <span class='recaudacion'>41.61M€</span></p>
                             </div>
                         </div>
 
-                        <!-- Single Artist -->
-                        <div class="single-artists d-flex align-items-center wow fadeInUp" data-wow-delay="350ms">
+                        <!-- Single Top Item -->
+                        <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="300ms">
                             <div class="thumbnail">
-                                <img src="<?php echo get_template_directory_uri(); ?>/img/bg-img/pa6.jpg" alt="">
+                                <div class="img bg-img pb-100" style="background-image: url('<?php echo get_template_directory_uri(); ?>/img/taquilla/8-apellidos-catalanes.jpg');"></div>
                             </div>
                             <div class="content-">
-                                <p>Radio Vibez</p>
+                                <h6>Ocho Apellidos Catalanes</h6>
+                                <p>2015 Recaudación Acumulada <span class='recaudacion'>35.48M€</span></p>
                             </div>
                         </div>
 
-                        <!-- Single Artist -->
-                        <div class="single-artists d-flex align-items-center wow fadeInUp" data-wow-delay="400ms">
+                        <!-- Single Top Item -->
+                        <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="350ms">
                             <div class="thumbnail">
-                                <img src="<?php echo get_template_directory_uri(); ?>/img/bg-img/pa7.jpg" alt="">
+                                <div class="img bg-img pb-100" style="background-image: url('<?php echo get_template_directory_uri(); ?>/img/taquilla/Retorno-del-Rey.jpg');"></div>
                             </div>
                             <div class="content-">
-                                <p>Music 4u</p>
+                                <h6>El Señor de los Anillos: El Retorno del Rey</h6>
+                                <p>2003 Recaudación Acumulada <span class='recaudacion'>32.93M€</span></p>
                             </div>
                         </div>
 
@@ -675,57 +705,7 @@
             </div>
         </div>
     </section>
-    <!-- ##### Miscellaneous Area End ##### -->
-
-    <!-- ##### Contact Area Start ##### -->
-    <section class="contact-area section-padding-100 bg-img bg-overlay bg-fixed has-bg-img" style="background-image: url(<?php echo get_template_directory_uri(); ?>/img/bg-img/bg-2.jpg);">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="section-heading white wow fadeInUp" data-wow-delay="100ms">
-                        <p>See what’s new</p>
-                        <h2>Get In Touch</h2>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-12">
-                    <!-- Contact Form Area -->
-                    <div class="contact-form-area">
-                        <form action="#" method="post">
-                            <div class="row">
-                                <div class="col-md-6 col-lg-4">
-                                    <div class="form-group wow fadeInUp" data-wow-delay="100ms">
-                                        <input type="text" class="form-control" id="name" placeholder="Name">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-4">
-                                    <div class="form-group wow fadeInUp" data-wow-delay="200ms">
-                                        <input type="email" class="form-control" id="email" placeholder="E-mail">
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="form-group wow fadeInUp" data-wow-delay="300ms">
-                                        <input type="text" class="form-control" id="subject" placeholder="Subject">
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-group wow fadeInUp" data-wow-delay="400ms">
-                                        <textarea name="message" class="form-control" id="message" cols="30" rows="10" placeholder="Message"></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-12 text-center wow fadeInUp" data-wow-delay="500ms">
-                                    <button class="btn oneMusic-btn mt-30" type="submit">Send <i class="fa fa-angle-double-right"></i></button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ##### Contact Area End ##### -->
+    <!-- ##### FIN RANKING TAQUILLAS ##### -->
 <?php
     get_footer();
 ?>

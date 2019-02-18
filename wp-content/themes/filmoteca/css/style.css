@@ -657,6 +657,17 @@ img {
     background-color: #000;
     -webkit-transition-duration: 500ms;
     transition-duration: 500ms; }
+    .single-event-area .event-text p {
+      color: white;
+      -webkit-transition-duration: 500ms;
+      transition-duration: 500ms;
+    }
+    .single-event-area .event-text hr {
+      background-color: white;
+      border-color: white;
+      -webkit-transition-duration: 500ms;
+      transition-duration: 500ms;
+    }
     .single-event-area .event-text h4 {
       color: #fff;
       text-transform: uppercase;
@@ -698,13 +709,16 @@ img {
     box-shadow: 0 5px 80px 0 rgba(0, 0, 0, 0.2); }
     .single-event-area:hover .event-text, .single-event-area:focus .event-text {
       background-color: #f5f9fa; }
-      .single-event-area:hover .event-text h4,
+      .single-event-area:hover .event-text h4, .single-event-area:hover .event-text p,
       .single-event-area:hover .event-text .event-meta-data a, .single-event-area:focus .event-text h4,
       .single-event-area:focus .event-text .event-meta-data a {
         color: #000000; }
       .single-event-area:hover .event-text .see-more-btn, .single-event-area:focus .event-text .see-more-btn {
         border-bottom-color: #000000;
         color: #000000; }
+      .single-event-area:hover .event-text hr {
+      background-color: #000000;
+      border-color: #000000;}
 
 /* :: 8.0 Newsletter Area CSS */
 .newsletter-area {
