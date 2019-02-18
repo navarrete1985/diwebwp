@@ -277,4 +277,9 @@
     //Video responsive en custom post
     $('.custom-post-content iframe').parent().addClass('wp-block-embed__wrapper');
     $('.custom-post-content img.aligncenter').parent('p').addClass('text-center');
+    
+    $('#wp-submit').addClass('btn oneMusic-btn mt-30');
+    $('#user_login').attr("placeholder", "Introduce Email");
+    $('#user_pass').attr("placeholder", "Introduce Contraseña");
+    
 })(jQuery);

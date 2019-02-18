@@ -414,29 +414,7 @@ height:100%;
     margin-right: 8px;
 }
 
-@media screen and (max-width: 1073px) {
-    .masonry-item {
-        width: 46%;
-    }
-}
 
-@media screen and (max-width: 894px) {
-    .masonry-item {
-        width: 45%;
-    }
-}
-
-@media screen and (max-width: 719px) {
-    .masonry-item {
-        width: 44%;
-    }
-}
-
-@media screen and (max-width: 650px) {
-    .masonry-item {
-        width: calc(100% - 24px);
-    }
-}
 
 /*-----------------------Estrellas para el custom post--------------------------------*/
 .custom-post-stars {
@@ -536,8 +514,59 @@ label.cp-star:before {
     margin: 0 auto;
 }
 
-/*----------------Cambios----------------*/
-/*.single-event-area:hover .event-text hr {*/
-/*      background-color: #000000;*/
-/*      border-color: #000000;*/
-/*}*/
+/*----------------lOGIN----------------*/
+#loginform {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+#loginform label {
+    display: block;
+    text-align: left;
+    margin-bottom: 0;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+}
+
+#loginform input[type='text'], #loginform input[type='password'] {
+    width: 100%;
+    height: 50px;
+    border: 1px solid #000000;
+    font-size: 12px;
+    font-style: italic;
+    padding: 0 20px;
+    border-radius: 0;
+    display: block;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+
+/*-----------------MEDIAS-------------------*/
+@media screen and (max-width: 1073px) {
+    .masonry-item {
+        width: 46%;
+    }
+}
+
+@media screen and (max-width: 894px) {
+    .masonry-item {
+        width: 45%;
+    }
+}
+
+@media screen and (max-width: 719px) {
+    .masonry-item {
+        width: 44%;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .masonry-item {
+        width: calc(100% - 24px);
+    }
+}
