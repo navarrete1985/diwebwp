@@ -652,6 +652,14 @@ label.cp-star:before {
     color: #000000 !important;
 }
 
+.img-avatar-profile {
+    width: 100px;
+    position: absolute;
+    border-radius: 50%;
+    bottom: -50px;
+    left: calc(50% - 50px);
+}
+
 /*-----------------MEDIAS-------------------*/
 @media screen and (max-width: 1073px) {
     .masonry-item {

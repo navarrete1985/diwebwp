@@ -54,6 +54,9 @@
 
 <?php
     $curauth = (get_query_var('author_name')) ? get_user_by('slug', get_query_var('author_name')) : get_userdata(get_query_var('author'));
+    
+    $avatar = get_avatar_url($curauth->ID, 400);
+    
 ?>
  <!--    < ?php-->
         
@@ -111,7 +114,8 @@
                     <!-- Cabecera de la biografía -->
                     <div class="row">
                         <div class="col-xl-4 col-sm-12">
-                            <div class="img pb-100 mb-70 bg-img " style="background-image: url(<?= get_template_directory_uri() ?>/img/bg-img/a1.jpg)"></div>
+                            <div class="img pb-100 mb-70 bg-img " style="background-image: url(<?= the_author_meta('userprofile', $curauth->ID) ?>)"></div>
+                            <div class='img img-avatar-profile pb-100 mb-70 bg-img' style="background-image: url(<?= $avatar ?>)"></div>
                         </div>
                         <div class="col-xl-8 col-sm-12">
                             <h2><?= $curauth->user_nicename ?> - Biografía</h2>
@@ -153,10 +157,10 @@
                                 <!-- Single Skills Area -->
                                 <div class="col-12 col-sm-6 col-lg-3">
                                     <div class="single-skils-area mb-100">
-                                        <div id="circle" class="circle" data-value="0.75">
+                                        <div id="circle" class="circle" data-value="0.<?= the_author_meta('skill1v', $curauth->ID) ?>">
                                             <div class="skills-text">
-                                                <span>75%</span>
-                                                <p>Good Music</p>
+                                                <span><?= the_author_meta('skill1v', $curauth->ID) ?>%</span>
+                                                <p><?= the_author_meta('skill1', $curauth->ID) ?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -165,10 +169,10 @@
                                 <!-- Single Skills Area -->
                                 <div class="col-12 col-sm-6 col-lg-3">
                                     <div class="single-skils-area mb-100">
-                                        <div id="circle2" class="circle" data-value="0.83">
+                                        <div id="circle2" class="circle" data-value="0.<?= the_author_meta('skill2v', $curauth->ID) ?>">
                                             <div class="skills-text">
-                                                <span>83%</span>
-                                                <p>Amazing Artists</p>
+                                                <span><?= the_author_meta('skill2v', $curauth->ID) ?>%</span>
+                                                <p><?= the_author_meta('skill2', $curauth->ID) ?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -177,10 +181,10 @@
                                 <!-- Single Skills Area -->
                                 <div class="col-12 col-sm-6 col-lg-3">
                                     <div class="single-skils-area mb-100">
-                                        <div id="circle3" class="circle" data-value="0.25">
+                                        <div id="circle3" class="circle" data-value="0.<?= the_author_meta('skill3v', $curauth->ID) ?>">
                                             <div class="skills-text">
-                                                <span>25%</span>
-                                                <p>Concerts</p>
+                                                <span><?= the_author_meta('skill3v', $curauth->ID) ?>%</span>
+                                                <p><?= the_author_meta('skill3', $curauth->ID) ?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -189,10 +193,10 @@
                                 <!-- Single Skills Area -->
                                 <div class="col-12 col-sm-6 col-lg-3">
                                     <div class="single-skils-area mb-100">
-                                        <div id="circle4" class="circle" data-value="0.95">
+                                        <div id="circle4" class="circle" data-value="0.<?= the_author_meta('skill4v', $curauth->ID) ?>">
                                             <div class="skills-text">
-                                                <span>95%</span>
-                                                <p>Superstars</p>
+                                                <span><?= the_author_meta('skill4v', $curauth->ID) ?>%</span>
+                                                <p><?= the_author_meta('skill4', $curauth->ID) ?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -202,25 +206,47 @@
                     </div>
                     <!-- RECENT POSTS -->
                     <div class="row mt-50 wow fadeInUp d-flex justify-content-center">
-                        <div class="col-10 text-center">
-                            <h1 class="mb-70">Últimos Posts</h1>
+                        <!--<div class="col-10 text-center">-->
+                        <!--    <h1 class="mb-70">Últimos Posts</h1>-->
                             <!--Posts-->
-                            <?php 
+                        <!--    < ?php -->
                             
-                                $lastest_posts = get_posts(array(
-                                    'post_type'  => ['post'],
-                                    'author'     => $curauth->ID,
-                                    'orderby'    => 'date',
-                                    'numberposts'=> 5
-                                ));
+                        <!--        $lastest_posts = get_posts(array(-->
+                        <!--            'post_type'  => ['post'],-->
+                        <!--            'author'     => $curauth->ID,-->
+                        <!--            'orderby'    => 'date',-->
+                        <!--            'numberposts'=> 5-->
+                        <!--        ));-->
                                 
-                                foreach($lastest_posts as $post){ 
-                                    the_post();
-                                    if (get_post_type($post) == 'post') {
-                                        get_template_part('templates/post', 'author');    
+                        <!--        foreach($lastest_posts as $post){ -->
+                        <!--            the_post();-->
+                        <!--            if (get_post_type($post) == 'post') {-->
+                        <!--                get_template_part('templates/post', 'author');    -->
+                        <!--            }-->
+                        <!--        }-->
+                        <!--    ?>-->
+                        <!--</div>-->
+                        <div class="col-md-12 text-center">
+                            <h1 class="mb-70">Últimos Posts</h1>
+                            <div class='row'>
+                                <!--Posts-->
+                                <?php 
+                                
+                                    $lastest_posts = get_posts(array(
+                                        'post_type'  => ['post'],
+                                        'author'     => $curauth->ID,
+                                        'orderby'    => 'date',
+                                        'numberposts'=> 3
+                                    ));
+                                    
+                                    foreach($lastest_posts as $post){ 
+                                        the_post();
+                                        if (get_post_type($post) == 'post') {
+                                            get_template_part('templates/post', 'author');    
+                                        }
                                     }
-                                }
-                            ?>
+                                ?>
+                            </div>
                         </div>
                     </div>
                 </div>

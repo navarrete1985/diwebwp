@@ -77,7 +77,8 @@
                         <!-- Cabecera de la biografía -->
                         <div class="row">
                             <div class="col-xl-4 col-sm-12">
-                                <div class="img pb-100 mb-70 bg-img " style="background-image: url(<?= get_template_directory_uri() ?>/img/bg-img/a1.jpg)"></div>
+                                <div class="img pb-100 mb-70 bg-img " style="background-image: url(<?= the_author_meta('userprofile', $curauth->ID) ?>)"></div>
+                                <div class='img img-avatar-profile pb-100 mb-70 bg-img' style="background-image: url(<?= get_avatar_url($curauth->ID, 400) ?>)"></div>
                             </div>
                             <div class="col-xl-8 col-sm-12">
                                 <h2><?= $curauth->user_nicename ?> - Biografía</h2>
@@ -134,8 +135,30 @@
                             </div>
                         </div>
                         <!-- RECENT POSTS -->
+                        <!--<div class="row mt-50 wow fadeInUp d-flex justify-content-center">-->
+                        <!--    <div class="col-12 col-xl-10 text-center">-->
+                        <!--        <h1 class="mb-70">Últimos Posts</h1>-->
+                                <!-- Single Post Start -->
+                        <!--        < ?php -->
+                            
+                        <!--            $lastest_posts = get_posts(array(-->
+                        <!--                'post_type'  => ['post'],-->
+                        <!--                'author'     => $curauth->ID,-->
+                        <!--                'orderby'    => 'date',-->
+                        <!--                'numberposts'=> 5-->
+                        <!--            ));-->
+                                    
+                        <!--            foreach($lastest_posts as $post){ -->
+                        <!--                the_post();-->
+                        <!--                if (get_post_type($post) == 'post') {-->
+                        <!--                    get_template_part('templates/post', 'author');    -->
+                        <!--                }-->
+                        <!--            }-->
+                        <!--        ?>-->
+                        <!--    </div>-->
+                        <!--</div>-->
                         <div class="row mt-50 wow fadeInUp d-flex justify-content-center">
-                            <div class="col-12 col-xl-10 text-center">
+                            <div class="col-12 col-xl-10 text-center d-flex flex-column h-100">
                                 <h1 class="mb-70">Últimos Posts</h1>
                                 <!-- Single Post Start -->
                                 <?php 
@@ -144,7 +167,7 @@
                                         'post_type'  => ['post'],
                                         'author'     => $curauth->ID,
                                         'orderby'    => 'date',
-                                        'numberposts'=> 5
+                                        'numberposts'=> 3
                                     ));
                                     
                                     foreach($lastest_posts as $post){ 

@@ -1,5 +1,4 @@
 <?php
-
     function extra_profile_fields($user) {?>
         <h3>Profile Picture</h3>
         <table class="form-table">
