@@ -1,7 +1,7 @@
 <div class='col-md-12 col-lg-4 mb-70'>
     <div class='single-event-area h-100 d-flex flex-column'>
         <div class='event-thumbnail'>
-            <div class="img bg-img pb-50" style="background-image: url(<?= the_post_thumbnail_url() ?>);"></div>
+            <div class="img bg-img pb-70" style="background-image: url(<?= the_post_thumbnail_url() ?>);"></div>
         </div>
         <div class='event-text h-100 d-flex flex-column'>
             <h4><?= get_the_title() ?></h4>

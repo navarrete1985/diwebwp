@@ -72,7 +72,7 @@
         <div class="container-full">
             <div class="row">
                 <!-- CONTENT -->
-                <div class="col-12 col-lg-9">
+                <div class="col-lg-12 col-xl-9">
                     <div class="content mb-100">
                         <!-- Cabecera de la biografía -->
                         <div class="row">
@@ -157,12 +157,12 @@
                         <!--        ?>-->
                         <!--    </div>-->
                         <!--</div>-->
-                        <div class="row mt-50 wow fadeInUp d-flex justify-content-center">
-                            <div class="col-12 col-xl-10 text-center d-flex flex-column h-100">
-                                <h1 class="mb-70">Últimos Posts</h1>
-                                <!-- Single Post Start -->
+                        <div class="col-md-12 text-center">
+                            <h1 class="mb-70">Últimos Posts</h1>
+                            <div class='row'>
+                                <!--Posts-->
                                 <?php 
-                            
+                                
                                     $lastest_posts = get_posts(array(
                                         'post_type'  => ['post'],
                                         'author'     => $curauth->ID,
@@ -182,7 +182,7 @@
                     </div>
                 </div>
                 <!-- SIDEBAR -->
-                <div class="col-12 col-lg-3">
+                <div class="col-lg-12 col-xl-3">
                     <?php get_sidebar(); ?>
                 </div>
             </div>
