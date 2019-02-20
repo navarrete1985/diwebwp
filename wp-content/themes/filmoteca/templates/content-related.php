@@ -1,4 +1,4 @@
-<div class='row justify-content-center'>
+<div class='row justify-content-center mt-70 mb-30'>
     <h1 class='text-center'>POST RELACIONADOS</h1>
 </div>
 <div class='row'>
@@ -24,12 +24,12 @@
         while($custom_query->have_posts()):
             $custom_query->the_post() 
     ?>
-        <div class='col-md-4 single-album-area wow fadeInUp resume-post'>
+        <div class='col-md-12 col-lg-4 single-album-area wow fadeInUp resume-post'>
             <div class="img bg-img pb-70" style="background-image:url('<?= the_post_thumbnail_url() ?>')">
             </div>
-            <h5><?= get_the_author() ?></h5>
+            <h5 class='mt-3'><?= get_the_title() ?></h5>
             <p><?= excerpt(20) ?></p>
-            <a class="btn oneMusic-btn m-2 align-self-end" href="<?= the_permalink() ?>" >Saber más</a>
+            <a class="btn oneMusic-btn m-2 " href="<?= the_permalink() ?>" >Saber más</a>
         </div>
     <?php endwhile;
             endif;

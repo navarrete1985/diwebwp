@@ -98,14 +98,18 @@ add_filter('comment_form_default_fields', 'remove_url_field');
 add_filter('comment_form_fields', 'push_comment_to_bottom');//Para esto podríamos usar el hook anterior...pero vemos que lo podemos enganchar con este también
 
 // CONTADOR DE VISITAS
-function get_num_visits($post_id) {
-    $numvisit = 1;
+function get_num_visits($post_id, $increment = true) {
+    $numvisit = 0;
     if (!add_post_meta($post_id, 'numvisit', $numvisit, true)) {
-       $numvisit = get_post_meta($post_id, 'numvisit', true) + 1;
-       update_post_meta($post_id, 'numvisit', $numvisit);
+        $numvisit = get_post_meta($post_id, 'numvisit', true);
+        if ($increment) {
+            $numvisit ++;
+            update_post_meta($post_id, 'numvisit', $numvisit);   
+        }
     }
     return $numvisit .( $numvisit == 1 ? ' Visita' : ' Visitas');
 }
+
 
 // Función para cambiar la longitud de the_excerpt
 function excerpt($limit) {
@@ -152,12 +156,11 @@ function getListString($post_id, $post_meta_key) {
 function my_login_logo(){
     echo '<style type="text/css">
         #login h1 a, .login h1 a {
-            background-image : url("https://i.pinimg.com/originals/80/78/22/8078227d0ce3cfe4f389d88400253f6d.png");
-            height: 245px;
-            width: 320px;
-            background-size: 300px, 300px;
+            background-image : url("' . get_template_directory_uri() . '/img/core-img/logo-b.png");
+            width: 100%;
+            background-size: contain;
             background-repeat: no-repeat;
-            margin-top: -100px;
+            margin-top: auto;
         }
     </style>';
 }

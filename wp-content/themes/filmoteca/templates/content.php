@@ -17,10 +17,16 @@
         <a href="<?php the_permalink(); ?>" class="post-title"><?php the_title(); ?></a>
         <!-- Post Meta -->
         <div class="post-meta d-flex mb-30">
-            <p class="post-author">By<a href="#"> <?php echo the_author(); ?></a></p>
-            <p class="tags">in<a href="#"> <?php echo the_category(); ?></a></p>
-            <p class="tags"><a href="#">2 Comments</a></p>
-            <p class="tags"><a href="#"><? echo the_post_views() ?></a></p>
+            <p class="post-author">Autor<a href="#"> <?php echo get_the_author(); ?></a></p>
+            <?php
+                $categories = wp_get_post_categories($post->ID);
+                foreach($categories as $cat) {
+                    $categorie = get_category($cat);
+                    echo '<p class="tags"><a href=' . get_category_link($cat)  . '>' . $categorie->name . '</a></p>';
+                }
+            ?>
+            <p class="tags"><i class="far fa-comments"></i>  <a href="#"><?= get_comments_number($post->ID) ?> Comentarios</a></p>
+            <p class="tags"><i class="far fa-eye"></i>  <a href="#"><?= get_num_visits($post->ID, false) ?></a></p>
         </div>
         <!-- Post Excerpt -->
         <!--<p>Pellentesque sit amet velit a libero viverra porta non eu justo. Vivamus mollis metus sem, ac sodales dui lobortis. Pellentesque sit amet velit a libero viverra porta non eu justo. Vivamus mollis metus sem, ac sodales dui lobortis.</p>-->

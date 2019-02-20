@@ -545,6 +545,112 @@ label.cp-star:before {
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
+/*-------------------------Reproductor música blog------------------*/
+.song-play-area.blog-song-play-area {
+    flex: 0 0 auto;
+    max-width: unset;
+    width: 100%;
+}
+
+.single-blog-post .blog-content-post-audio .post-date {
+    width: 76px;
+    height: 106px;
+    border: 1px solid #000000;
+    text-align: center;
+    background-color: #fff;
+    position: absolute;
+    z-index: 10;
+    top: -30px;
+    left: 30px;
+    padding: 17px 0;
+}
+
+.single-blog-post .blog-content-post-audio .post-date span:first-child {
+    font-size: 36px;
+}
+
+.single-blog-post .blog-content-post-audio .post-date span {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.widgettitle {
+    display: none;
+}
+
+/*-------------------SEARCH BAR SIDEBAR------------------*/
+.widget-content #searchform input[type="text"] {
+    flex: 1 1 80px;
+    width: 100%;
+    height: 30px;
+    border: 1px solid #000000;
+    font-size: 12px;
+    font-style: italic;
+    padding: 0 20px;
+    border-radius: 0;
+    margin-top: 0px;
+    margin-right: -1px;
+}
+
+.widget-content #searchform div {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.widget-content #searchform input[type="submit"] {
+    flex: 0 0 auto;
+    cursor: pointer;
+    margin-top: 0px;
+    background-color: #fff;
+    -webkit-transition-duration: 500ms;
+    transition-duration: 500ms;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    height: 30px;
+    color: #000;
+    border: 1px solid #000;
+    border-radius: 0;
+    padding: 0 16px;
+    font-size: 16px;
+    line-height: 28px;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.widget-content #searchform input[type="submit"]:hover {
+    font-size: 16px;
+    font-weight: 700;
+    background-color: #000000;
+    color: #fff;
+}
+
+.classy-navbar .nav-brand {
+    max-width: 160px !important;
+}
+
+
+.footer-area a img {
+    max-width: 160px !important;
+}
+/*--------------------SIDEBAR ESTILOS A------------------*/
+.widget-content.last-entries-sidebar a, .widget-content.pages-sidebar a{
+    color: #5f5f5f !important;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.widget-content.pages-sidebar li {
+    margin-bottom: 8px;
+}
+
+.widget-content.last-entries-sidebar a:hover, .widget-content.pages-sidebar a:hover {
+    color: #000000 !important;
+}
 
 /*-----------------MEDIAS-------------------*/
 @media screen and (max-width: 1073px) {

@@ -431,7 +431,7 @@
                             <div class="featured-artist-content">
                                 <!-- Section Heading -->
                                 <div class="section-heading white text-left mb-30">
-                                    <p><?= get_the_author() ?></p>
+                                    <p><span><?= get_the_author() ?></span> | <span><?= get_the_date() ?></span><br><i class="far fa-eye"></i>&nbsp;&nbsp;<?= get_num_visits($post->ID, false) ?></p>
                                     <a href='<?= get_the_permalink() ?>'><h2><?= get_the_title() ?></h2></a>
                                 </div>
                                 <p><?= get_the_excerpt() ?></p>
