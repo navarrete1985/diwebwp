@@ -5,7 +5,7 @@
  * 
  */
  add_theme_support('post-thumbnails');
- add_theme_support('post-formats', array('image', 'link', 'gallery', 'audio', 'video', 'quote'));
+ add_theme_support('post-formats', array('audio', 'quote'));
  require_once('templates/custom-fields.php');
 /**
  * Registramos todas nuestras funciones personalizadas
@@ -38,6 +38,15 @@ function my_theme_script() {
     
     wp_register_script('masonry', get_template_directory_uri() . '/js/plugins/masonry-docs.min.js', array('jquery'), null, true);
     wp_enqueue_script('masonry');
+    
+    wp_register_script('list', get_template_directory_uri() . '/js/plugins/list.js', array('jquery'), null, true);
+    wp_enqueue_script('list');
+    
+    wp_register_script('handlebars', get_template_directory_uri() . '/js/plugins/handlebars-v4.1.0.js', array('jquery'), null, true);
+    wp_enqueue_script('handlebars');
+    
+    wp_register_script('chat', get_template_directory_uri() . '/js/chat.js', array('jquery'), null, true);
+    wp_enqueue_script('chat');
 }
 
 add_action('wp_enqueue_scripts', 'my_theme_script');

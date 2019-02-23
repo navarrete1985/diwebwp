@@ -51,12 +51,11 @@ get_header();
 </section>
 <?php
 }else {
-    echo '<a href="' . wp_logout_url(get_permalink()) . '">Cerrar Sesión</a>';
-}
+    // echo '<a href="' . wp_logout_url(get_permalink()) . '">Cerrar Sesión</a>';
+
     $user = wp_get_current_user();
     if ($user->ID > 0) {
         $rol  = get_author_role($user->ID);
-        echo $rol;    
         switch($rol) {
             case 'administrator':
             case 'editor':
@@ -68,6 +67,7 @@ get_header();
                 break;
         }
     }
+}
 ?>
 <?= get_footer(); ?>
      

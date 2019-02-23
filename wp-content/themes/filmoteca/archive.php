@@ -45,13 +45,13 @@
                     }elseif (is_author()) {
                         $title = 'Autor Archives';
                     }elseif (is_day()) {
-                        $title_archives = 'Día Archives: ' . get_the_date();
+                        $title = 'Día Archives: ' . get_the_date();
                     } elseif (is_month()) {
-                        $title_archives = 'Monthly Archives:  ' . get_the_date('F Y');
+                        $title = 'Monthly Archives:  ' . get_the_date('F Y');
                     } elseif (is_year()) {
-                        $title_archives = ' Yearly Archives:  ' . get_the_date('Y');
+                        $title = ' Yearly Archives:  ' . get_the_date('Y');
                     }else {
-                        $title_archives = ' Entro por la cara';
+                        $title = ' Entro por la cara';
                     }
                 }
             ?>

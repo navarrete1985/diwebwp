@@ -249,8 +249,8 @@
                     <div class="oneMusic-pagination-area wow fadeInUp" data-wow-delay="300ms">
                         <?php the_posts_pagination(array(
                                 'mid_size'  => 2,
-                                'prev_text' => __('Anterior', 'textdomain'), //Echo especial para poder usar el multi lenguaje
-                                'next_text' => __('Siguiente', 'textdomain')
+                                'prev_text' => __('« Anterior ', 'textdomain'), //Echo especial para poder usar el multi lenguaje
+                                'next_text' => __('Siguiente »', 'textdomain')
                             ));
                         ?>
                     </div>
