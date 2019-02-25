@@ -13,6 +13,24 @@ The plugin renders a tag cloud using a professionally designed tag image as a ba
 
 The plugin's tag cloud is completely responsive and is correctly rendered in all browsers.
 
+The main usage is with the "Cool Tag Cloud" widget but you can also use the shortcode [cool_tag_cloud].
+
+Here's the list of all available parameters for the shortcode:
+
+- style="default|silver|green|red|blue|brown|purple|cyan|lime|black"
+- font_family="Arial, Helvetica, sans-serif"
+- align="left|right"
+- font_weight="normal|bold"
+- text_transform="none|uppercase|lowercase|capitalize"
+- number="20"
+- order_by="name|count"
+- order="ASC|DESC|RAND"
+- taxonomy="post_tag"
+- tooltip="yes|no"
+- nofollow="yes|no"
+- animation="yes|no"
+- on_single_display="global|local"
+
 If you liked my plugin, please <strong>rate</strong> it.
 
 Special thanks to [Orman Clark](http://www.premiumpixels.com/freebies/tagtastic-tag-cloud-psd/) for the tag image and to [Dimox](http://dimox.name/beautiful-tags-markup/) for the CSS code.
@@ -47,6 +65,12 @@ Yes, please use [translate.wordpress.org](https://translate.wordpress.org/projec
 7. Font-family: "Open Sans", Font weight: Bold, Font size: 11px to 17px, Image style: Green.
 
 == Changelog ==
+
+= 2.10 =
+* Added [cool_tag_cloud] shortcode
+
+= 2.09 =
+* PHP7 compatibility fixes
 
 = 2.08 =
 * the option to show tags of the shown post now works for pages as well

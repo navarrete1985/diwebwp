@@ -3,7 +3,7 @@
 Plugin Name: Cool Tag Cloud
 Plugin URI: https://wordpress.org/plugins/cool-tag-cloud/
 Description: A simple, yet very beautiful tag cloud.
-Version: 2.08
+Version: 2.10
 Author: WPKube
 Author URI: https://www.wpkube.com/
 Text Domain: cool-tag-cloud
@@ -533,7 +533,9 @@ function ctc_nofollow_tag_cloud($text) {
     return str_replace('<a href=', '<a rel="nofollow" href=',  $text);	
 }
 
-add_action('widgets_init', create_function('', 'register_widget( "Cool_Tag_Cloud_Widget" );'));
+function cool_tag_cloud_register_widget() {
+	register_widget( "Cool_Tag_Cloud_Widget" );
+} add_action('widgets_init', 'cool_tag_cloud_register_widget' );
 
 function cool_tag_cloud_files() {
 	$purl = plugins_url();
@@ -547,4 +549,62 @@ function cool_tag_cloud_setup(){
 }
 add_action('init', 'cool_tag_cloud_setup');
 
-?>
+function cool_tag_cloud_sc( $atts = array(), $content = false ) {
+
+	$defaults = array( 
+		'font_weight'   => 'normal',
+		'font_family'   => 'Arial, Helvetica, sans-serif',
+		'smallest'      => 10,
+		'largest'       => 10,
+		'format'        => 'flat',
+		'separator'     => '',
+		'unit'          => 'px',
+		'number'        => 20,
+		'orderby'       => 'name',
+		'order'         => 'ASC',
+		'taxonomy'      => 'post_tag',
+		'exclude'       => null,
+		'include'       => null,
+		'tooltip'       => 'yes',
+		'text_transform' => 'none',
+		'nofollow'      => 'no',
+		'style'    => 'default',
+		'align'    => 'left',
+        'animation'     => 'no',
+        'on_single_display' => 'global',
+	);
+
+	ob_start();
+
+		$l_tag_params = wp_parse_args($atts, $defaults);
+		$l_tag_params['echo'] = false;
+		if ($l_tag_params["tooltip"] == 'no') {add_filter('wp_tag_cloud', 'ctc_remove_title_attributes');};
+		if ($l_tag_params["nofollow"] == 'yes') {add_filter('wp_tag_cloud', 'ctc_nofollow_tag_cloud');};
+		if ( $l_tag_params['on_single_display'] == 'local' && is_singular( array( 'post', 'page' ) ) ) {
+			$tag_ids = wp_get_post_tags( get_the_ID(), array( 'fields' => 'ids' ) );
+			$l_tag_params['include'] = $tag_ids;
+		}
+		$l_tag_cloud_text = wp_tag_cloud( $l_tag_params  );
+		if ($l_tag_params["tooltip"] == 'no') {remove_filter('wp_tag_cloud', 'ctc_remove_title_attributes');};
+		if ($l_tag_params["nofollow"] == 'yes') {remove_filter('wp_tag_cloud', 'ctc_nofollow_tag_cloud');};
+
+		echo '<div class="cool-tag-cloud">';
+			if ($l_tag_params["font_weight"] == "bold") {echo '<div class="cloudbold">';}
+				if ($l_tag_params["animation"] == "yes") {echo '<div class="animation">';}
+					echo '<div class="ctc' . $l_tag_params["style"] . '">';
+						echo '<div class="ctc' . $l_tag_params["align"] . '">';
+							echo '<div class="' . $l_tag_params["font_family"] . '" style="text-transform:' . $l_tag_params["text_transform"] . '!important;">';
+								echo $l_tag_cloud_text;
+							echo '</div>';
+						echo '</div>';
+					echo '</div>';
+				if ($l_tag_params["animation"] == "yes") {echo '</div>';}
+			if ($l_tag_params["font_weight"] == "bold") {echo '</div>';}
+		echo '</div>';		
+
+	$output = ob_get_contents();
+	ob_end_clean();
+
+	return $output;
+
+} add_shortcode( 'cool_tag_cloud', 'cool_tag_cloud_sc' );

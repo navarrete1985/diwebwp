@@ -581,7 +581,8 @@ label.cp-star:before {
 }
 
 /*-------------------SEARCH BAR SIDEBAR------------------*/
-.widget-content #searchform input[type="text"] {
+.widget-content #searchform input[type="text"],
+#searchform input[type="text"]{
     flex: 1 1 80px;
     width: 100%;
     height: 30px;
@@ -594,14 +595,16 @@ label.cp-star:before {
     margin-right: -1px;
 }
 
-.widget-content #searchform div {
+.widget-content #searchform div,
+#searchform div {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
 }
 
-.widget-content #searchform input[type="submit"] {
+.widget-content #searchform input[type="submit"],
+#searchform input[type="submit"] {
     flex: 0 0 auto;
     cursor: pointer;
     margin-top: 0px;
@@ -622,7 +625,8 @@ label.cp-star:before {
     text-transform: capitalize;
 }
 
-.widget-content #searchform input[type="submit"]:hover {
+.widget-content #searchform input[type="submit"]:hover,
+#searchform input[type="submit"]:hover {
     font-size: 16px;
     font-weight: 700;
     background-color: #000000;
@@ -703,6 +707,10 @@ blockquote p {
 
 .wp-block-quote cite {
     font-size: 1.3em;
+}
+
+.blog-standard blockquote p {
+    font-size: 15px;
 }
 
 /*-----------------MEDIAS-------------------*/

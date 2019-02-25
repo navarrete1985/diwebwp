@@ -1,1 +1,0 @@
-post de tipo link<br>

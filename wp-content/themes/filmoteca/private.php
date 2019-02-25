@@ -63,7 +63,7 @@ get_header();
             case 'subcriber':
             case 'contributor':
                 //Lo suyo es tener un template para cada uno de los roles, y pintar dependiendo de cada uno de ellos
-                get_template_part('templates/content', $rol);
+                get_template_part('templates/content', 'private');
                 break;
         }
     }

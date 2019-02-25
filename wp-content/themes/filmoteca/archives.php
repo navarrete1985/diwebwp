@@ -32,7 +32,7 @@ Template Name: Archivos
         </div>
     </header>
     <!--Cabecera-->
-     <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(<?php echo get_template_directory_uri(); ?>/img/bg-img/breadcumb3.jpg);">
+     <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(<?php echo get_template_directory_uri(); ?>/img/bg-img/archives.jpg);">
         <div class="bradcumbContent">
             <h2>ARCHIVES</h2>
         </div>

@@ -32,7 +32,7 @@
     <!-- ##### Header Area End ##### -->
 
     <!-- ##### Breadcumb Area Start ##### -->
-    <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(<?= get_template_directory_uri() ?>/img/bg-img/breadcumb3.jpg);">
+    <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(<?= get_template_directory_uri() ?>/img/bg-img/reviews.jpg);">
         <div class="bradcumbContent">
             <p>Conoce las últimas reviews</p>
             <h2>Últimas Reviews</h2>

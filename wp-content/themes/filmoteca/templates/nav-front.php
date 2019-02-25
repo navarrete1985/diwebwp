@@ -27,19 +27,6 @@
                 <li><a href="<?php echo get_page_link(get_page_by_title('Archivos')) ?>">Archivos</a></li>
                 <li><a href="<?php echo get_page_link(get_page_by_title('Private')) ?>">Private</a></li>
             </ul>
-
-            <!-- Login/Register & Cart Button -->
-            <!--<div class="login-register-cart-button d-flex align-items-center">-->
-                <!-- Login/Register -->
-            <!--    <div class="login-register-btn mr-50">-->
-            <!--        <a href="login.html" id="loginBtn">Login / Register</a>-->
-            <!--    </div>-->
-
-                <!-- Cart Button -->
-            <!--    <div class="cart-btn">-->
-            <!--        <p><span class="icon-shopping-cart"></span> <span class="quantity">1</span></p>-->
-            <!--    </div>-->
-            <!--</div>-->
         </div>
         <!-- Nav End -->
 

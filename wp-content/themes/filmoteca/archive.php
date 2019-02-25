@@ -27,7 +27,7 @@
             </div>
         </div>
     </header>
-    <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(<?php echo get_template_directory_uri(); ?>/img/bg-img/breadcumb3.jpg);">
+    <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(<?php echo get_template_directory_uri(); ?>/img/bg-img/sherlock.jpg);">
         <div class="bradcumbContent">
             <?php
             
@@ -54,6 +54,7 @@
                         $title = ' Entro por la cara';
                     }
                 }
+                wp_reset_postdata();
             ?>
             
             <h2><?= $title ?></h2>
@@ -62,7 +63,7 @@
     <section id=blog-standard class="section blog-standard mb-5">
         <div class=container>
             <div class="row">
-                <div class="col-md-3 container-fluid mt-5">
+                <div class="col-md-3 container-fluid mt-100 mb-4">
                     <?php get_search_form(); ?>
                 </div>
             </div>    

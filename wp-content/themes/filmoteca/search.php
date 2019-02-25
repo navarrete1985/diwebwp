@@ -28,7 +28,7 @@
             </div>
         </div>
     </header>
-    <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(<?php echo get_template_directory_uri(); ?>/img/bg-img/breadcumb3.jpg);">
+    <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(<?php echo get_template_directory_uri(); ?>/img/bg-img/sherlock.jpg);">
         <div class="bradcumbContent">
             <?php
                 $total_busqueda = $wp_the_query->post_count;

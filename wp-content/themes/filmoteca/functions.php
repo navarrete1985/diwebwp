@@ -184,12 +184,26 @@ add_filter('login_headerurl', 'my_login_logo_url');
 /*Esta función es la encargada de insertar el checkbox para aceptación de las políticas de privacidad a los usuarios ya logueados*/
 function aditional_field_to_logged_user() {
     $content = '<div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="policy">
+                    <input type="checkbox" class="form-check-input" id="policy" name="policy">
                     <label class="form-check-label" for="policy">Acepta las <a href="#">políticas de privacidad</a> de la página</label>
               </div>';
     echo $content;
 }
 
 add_action('comment_form_logged_in_after', 'aditional_field_to_logged_user');
+
+/**
+ *  Función para poder guardar el consentimiento de publicación de un comentario en la base de datos
+ */
+function save_comment_policy_accept ( $post_comment_id ) {
+    $save_meta_checkbox = $_POST['policy'];
+    if ( $save_meta_checkbox == 'on' ) {
+        $value = 'El checkbox está marcado, Se acepta la política de privacidad';
+    } else {
+     	$value = 'El checkbox no está marcado, No se acepta la política de privacidad';
+    }
+    add_comment_meta( $post_comment_id, 'policy', $value, true );
+}
+add_action( 'comment_post', 'save_comment_policy_accept', 1 );
 
 ?>
