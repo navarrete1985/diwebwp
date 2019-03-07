@@ -36,7 +36,7 @@
                 
                 if (have_posts()) {    
                     // Hallamos el total de post devueltos
-                    $total_results = $wp_the_query->post_count;
+                    $total_results = $wp_the_query->found_posts;
                         
                     if (is_category()) {
                         $title = single_cat_title('Categoría Archives para: ', false);
@@ -53,6 +53,8 @@
                     }else {
                         $title = ' Entro por la cara';
                     }
+                }else {
+                    $title = 'Ups, no se han encontrado resultados';
                 }
                 wp_reset_postdata();
             ?>
@@ -71,7 +73,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="header">
-                        <h3>Coincidencias encontradas: <?= $total_results > 1 ? $total_results . ' Posts' : $total_results . ' Post'?></h3>
+                        <h3 class="mb-3">Coincidencias encontradas: <?= $total_results > 1 ? $total_results . ' Posts' : $total_results . ' Post'?></h3>
                     </div>
                     <table class="table">
                       <thead>
@@ -88,6 +90,14 @@
                       </tbody>
                     </table>
                 </div>
+            </div>
+            <div class="oneMusic-pagination-area wow fadeInUp mt-3 mb-100" data-wow-delay="300ms">
+                <?php the_posts_pagination(array(
+                        'mid_size'  => 2,
+                        'prev_text' => __('« Anterior ', 'textdomain'), //Echo especial para poder usar el multi lenguaje
+                        'next_text' => __('Siguiente »', 'textdomain')
+                    ));
+                ?>
             </div>
         </div>
     </section>

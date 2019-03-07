@@ -530,6 +530,7 @@ label.cp-star:before {
 }
 
 #loginform input[type='text'], #loginform input[type='password'] {
+    margin-top: 8px;
     width: 100%;
     height: 50px;
     border: 1px solid #000000;
@@ -545,6 +546,9 @@ label.cp-star:before {
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
+input[type='email'] {
+    margin-top: 8px;
+}
 /*-------------------------Reproductor música blog------------------*/
 .song-play-area.blog-song-play-area {
     flex: 0 0 auto;
