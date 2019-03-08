@@ -2224,3 +2224,21 @@
 [07-Feb-2019 18:38:44 UTC] PHP   4. call_user_func:{/home/ubuntu/workspace/wp-admin/includes/template.php:1215}() /home/ubuntu/workspace/wp-admin/includes/template.php:1215
 [07-Feb-2019 18:38:44 UTC] PHP   5. filmoteca_review_meta_box_callback() /home/ubuntu/workspace/wp-admin/includes/template.php:1215
 [07-Feb-2019 18:38:44 UTC] PHP   6. in_array() /home/ubuntu/workspace/wp-content/plugins/peliculas.php:183
+[08-Mar-2019 07:31:08 UTC] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home/ubuntu/workspace/wp-content/plugins/peliculas.php on line 166
+[08-Mar-2019 07:31:08 UTC] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home/ubuntu/workspace/wp-content/plugins/peliculas.php on line 167
+[08-Mar-2019 07:31:08 UTC] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home/ubuntu/workspace/wp-content/plugins/peliculas.php on line 168
+[08-Mar-2019 07:31:08 UTC] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home/ubuntu/workspace/wp-content/plugins/peliculas.php on line 169
+[08-Mar-2019 07:31:08 UTC] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home/ubuntu/workspace/wp-content/plugins/peliculas.php on line 170
+[08-Mar-2019 07:31:08 UTC] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home/ubuntu/workspace/wp-content/plugins/peliculas.php on line 171
+[08-Mar-2019 07:31:08 UTC] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home/ubuntu/workspace/wp-content/plugins/peliculas.php on line 172
+[08-Mar-2019 07:31:08 UTC] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home/ubuntu/workspace/wp-content/plugins/peliculas.php on line 173
+[08-Mar-2019 07:31:08 UTC] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home/ubuntu/workspace/wp-content/plugins/peliculas.php on line 174
+[08-Mar-2019 07:31:08 UTC] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home/ubuntu/workspace/wp-content/plugins/peliculas.php on line 175
+[08-Mar-2019 07:31:08 UTC] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home/ubuntu/workspace/wp-content/plugins/peliculas.php on line 176
+[08-Mar-2019 07:31:08 UTC] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home/ubuntu/workspace/wp-content/plugins/peliculas.php on line 177
+[08-Mar-2019 07:31:08 UTC] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home/ubuntu/workspace/wp-content/plugins/peliculas.php on line 178
+[08-Mar-2019 07:31:08 UTC] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home/ubuntu/workspace/wp-content/plugins/peliculas.php on line 179
+[08-Mar-2019 07:31:08 UTC] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home/ubuntu/workspace/wp-content/plugins/peliculas.php on line 180
+[08-Mar-2019 07:31:08 UTC] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home/ubuntu/workspace/wp-content/plugins/peliculas.php on line 181
+[08-Mar-2019 07:31:08 UTC] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home/ubuntu/workspace/wp-content/plugins/peliculas.php on line 182
+[08-Mar-2019 07:31:08 UTC] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home/ubuntu/workspace/wp-content/plugins/peliculas.php on line 183

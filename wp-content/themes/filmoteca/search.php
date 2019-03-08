@@ -31,7 +31,7 @@
     <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(<?php echo get_template_directory_uri(); ?>/img/bg-img/sherlock.jpg);">
         <div class="bradcumbContent">
             <?php
-                $total_busqueda = $wp_the_query->post_count;
+                $total_busqueda = $wp_the_query->found_posts;
                 switch($total_busqueda) {
                     case 0:
                         $label = '0 post encontrados';
@@ -55,41 +55,11 @@
                 </div>
             </div>    
             <div class="row m-5">
-                <div class="col-md-9">
-                    <!--< ?php -->
-                    <!--    $args = array (-->
-                    <!--        'type' => 'postbypost',-->
-                    <!--        'limit' => 5,-->
-                    <!--    );-->
-                    <!--    wp_get_archives( $args );-->
-                    <!--?>-->
-                    <div class='row'>
-                        <div class="col-md-3">
-                            <div class="oneMusic-buttons-area fadeInUp">
-                                <a class="btn oneMusic-btn btn-sm" href=#>Categorías</a>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="oneMusic-buttons-area fadeInUp">
-                                <a class="btn oneMusic-btn btn-sm" href=#>Categorías</a>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="oneMusic-buttons-area fadeInUp">
-                                <a class="btn oneMusic-btn btn-sm" href=#>Categorías</a>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="oneMusic-buttons-area fadeInUp">
-                                <a class="btn oneMusic-btn btn-sm" href=#>Categorías</a>
-                            </div>
-                        </div>
-                    </div>
+                <div class='col-md-12 wow fadeInUp'>
+                    <h3 class='text-center mb-30 capitalize'>Categorías más relevantes</h3>    
                 </div>
-                <div class="col-md-2 ml-5">
-                    <div class="load-more-btn text-center wow fadeInUp">
-                        <a class="btn oneMusic-btn" href=#>Todo</a>
-                    </div>
+                <div class='col-md-12 most-popular-categories-search d-flex justify-content-around wow fadeInUp'>
+                    <?php wp_list_categories('number=4&orderby=count&order=DESC&title_li='); ?>    
                 </div>
             </div>
             <?php if(have_posts()): ?>
@@ -116,6 +86,14 @@
                 </div>
             </div>
             <?php endif ?>
+            <div class="oneMusic-pagination-area wow fadeInUp mt-3 mb-100" data-wow-delay="300ms">
+                <?php the_posts_pagination(array(
+                        'mid_size'  => 2,
+                        'prev_text' => __('« Anterior ', 'textdomain'), //Echo especial para poder usar el multi lenguaje
+                        'next_text' => __('Siguiente »', 'textdomain')
+                    ));
+                ?>
+            </div>
         </div>
     </section>
 

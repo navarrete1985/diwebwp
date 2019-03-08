@@ -31,7 +31,7 @@
     <!-- ##### Breadcumb Area Start ##### -->
     <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(<?php echo get_template_directory_uri(); ?>/img/bg-img/top1.jpg);">
         <div class="bradcumbContent">
-            <p>See what’s new</p>
+            <p>Últimas noticias</p>
             <h2>Noticias</h2>
             <!--<h2>< ?php the_title() ?></h2>-->
         </div>

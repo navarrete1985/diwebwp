@@ -717,6 +717,38 @@ blockquote p {
     font-size: 15px;
 }
 
+/*Listado de categorias para search*/
+.most-popular-categories-search li {
+    list-style-type: none;
+    margin: 8px;
+    border: 1px solid black;
+    padding: 4px 8px;
+    transition-duration: 500ms;
+    color: #000;
+    border: 1px solid #000;
+    text-transform: capitalize;
+}
+
+.most-popular-categories-search li:hover {
+    font-size: 16px;
+    font-weight: 700;
+    background-color: #000000;
+    
+}
+
+.most-popular-categories-search li a {
+    transition-duration: 500ms;
+    color: #000;
+}
+
+.most-popular-categories-search li:hover a {
+    color: #fff;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
 /*-----------------MEDIAS-------------------*/
 @media screen and (max-width: 1073px) {
     .masonry-item {
