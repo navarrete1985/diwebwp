@@ -1,7 +1,7 @@
 <?php
     get_header();
 ?>
-<body>
+<body class='body-front'>
      <!--Preloader -->
     <div class="preloader d-flex align-items-center justify-content-center">
         <div class="lds-ellipsis">

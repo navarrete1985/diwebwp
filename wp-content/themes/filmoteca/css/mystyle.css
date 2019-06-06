@@ -1,3 +1,11 @@
+body {
+    overflow-x: hidden !important;
+}
+
+textarea {
+    resize: none;
+}
+
 .pt-100 {
     padding-top: 100px !important;
 }
